@@ -6,6 +6,7 @@ import ScrollContainer from './components/ScrollContainer';
 import MetabolomeSphere from './components/MetabolomeSphere';
 import LiveChart from './components/LiveChart';
 import Navbar from './components/Navbar';
+import ScrollVideo from './components/ScrollVideo';
 import './App.css';
 
 function App() {
@@ -160,25 +161,38 @@ function App() {
 
         {/* Breakthrough Section - Doubling Our Known Universe */}
         <section className="breakthrough-section">
-          <div className="breakthrough-content">
-            <motion.h2 
-              className="breakthrough-title"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-            >
-              Doubling Our Known Universe
-            </motion.h2>
-            
-            <motion.div 
-              className="breakthrough-description"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-            >
-              <p>We applied a strategy called <strong>Reverse Metabolomics</strong>: searching our new synthetic library against massive public data repositories.</p>
-              <p>The result: we doubled the annotation rate of all public MS/MS data, matching over 60 million spectra and identifying over 15,000 distinct molecules.</p>
-            </motion.div>
+          <div className="breakthrough-container">
+            <video
+              className="background-video"
+              autoPlay
+              loop
+              muted
+              playsInline
+              src="/videos/1.mp4"
+            />
+            <div className="content-overlay">
+              <motion.h2
+                className="section-title"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                Doubling Our Known Universe
+              </motion.h2>
+
+              <motion.div
+                className="section-text"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
+              >
+                <p>
+                  We applied a strategy called <strong>Reverse Metabolomics</strong>: searching our new synthetic library against massive public data repositories.
+                  <br/><br/>
+                  The result: we doubled the annotation rate of all public MS/MS data, matching over <strong>60 million spectra</strong> and identifying over <strong>15,000 distinct molecules</strong>.
+                </p>
+              </motion.div>
+            </div>
 
             <div className="breakthrough-stats">
               <motion.div 
@@ -200,9 +214,9 @@ function App() {
                   <span className="after">6.8% annotated</span>
                 </div>
               </motion.div>
-              
+
               <div className="spectra-matches">
-                <motion.div 
+                <motion.div
                   className="big-number"
                   initial={{ opacity: 0, scale: 0.5 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -218,9 +232,9 @@ function App() {
               <div className="chart-section">
                 <LiveChart isVisible={scrollProgress > 0.6} />
               </div>
-              
+
               <div className="stats-grid">
-                <motion.div 
+                <motion.div
                   className="stat-card"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -229,8 +243,8 @@ function App() {
                   <h3>Distinct Molecules</h3>
                   <div className="stat-number">15,000+</div>
                 </motion.div>
-                
-                <motion.div 
+
+                <motion.div
                   className="stat-card"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -239,8 +253,8 @@ function App() {
                   <h3>Annotation Rate</h3>
                   <div className="stat-number">Doubled</div>
                 </motion.div>
-                
-                <motion.div 
+
+                <motion.div
                   className="stat-card"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -252,6 +266,35 @@ function App() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Awakening Section - Bringing the Dark Metabolome to Light */}
+        <section className="awakening-section">
+          <ScrollVideo src="/videos/2.mp4" className="awakening-container">
+            <div className="content-overlay">
+              <motion.h2
+                className="section-title"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                Bringing the Dark Metabolome to Light
+              </motion.h2>
+
+              <motion.div
+                className="section-text"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
+              >
+                <p>
+                  Using <strong>Reverse Metabolomics</strong>, we searched our new synthetic library against massive public data repositories, effectively turning the unknown into the known.
+                  <br/><br/>
+                  This breakthrough doubled the annotation rate of all public MS/MS data, matching over <strong>60 million spectra</strong> and bringing <strong>15,000 molecules</strong> out of the dark.
+                </p>
+              </motion.div>
+            </div>
+          </ScrollVideo>
         </section>
 
         {/* Case Study 1: Drug Metabolism */}
@@ -392,10 +435,39 @@ function App() {
           </div>
         </section>
 
+        {/* Final Video Section - The Future of Metabolomics */}
+        <section className="final-video-section">
+          <ScrollVideo src="/videos/3.mp4" className="final-video-container">
+            <div className="content-overlay">
+              <motion.h2
+                className="section-title"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                The Future of Metabolomics
+              </motion.h2>
+
+              <motion.div
+                className="section-text"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
+              >
+                <p>
+                  This is just the beginning. Our <strong>Reverse Metabolomics</strong> approach opens new frontiers in understanding the molecular complexity of life.
+                  <br/><br/>
+                  With <strong>15,000+ newly identified molecules</strong> and counting, we're building the foundation for the next generation of precision medicine and personalized therapeutics.
+                </p>
+              </motion.div>
+            </div>
+          </ScrollVideo>
+        </section>
+
         {/* Team Section */}
         <section className="team-section">
           <div className="team-content">
-            <motion.h2 
+            <motion.h2
               className="team-title"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -403,42 +475,153 @@ function App() {
             >
               A Collaborative Effort
             </motion.h2>
-            
-            <motion.div 
+
+            <motion.div
               className="team-description"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
             >
-              <div className="researcher-highlight">
-                <motion.div 
-                  className="researcher-card"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                >
-                  <div className="researcher-name">Abubaker Patan, Ph.D.</div>
-                  <div className="researcher-lab">Dorrestein Lab</div>
-                  <div className="researcher-institution">UC San Diego</div>
-                </motion.div>
-                <motion.p 
-                  className="research-presentation"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.7 }}
-                >
-                  This research is presented by <strong>Abubaker Patan, Ph.D.</strong>, from the <strong>Dorrestein Lab</strong> at UC San Diego.
-                </motion.p>
-              </div>
               <p>This work would not be possible without a global collaborative ecosystem and the dedicated researchers charting the future of metabolomics.</p>
             </motion.div>
 
+            {/* Research Team */}
+            <motion.div
+              className="team-members"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              <h3>Research Team</h3>
+              <div className="team-grid">
+                <motion.div
+                  className="team-member"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                >
+                  <div className="member-photo">
+                    <div className="photo-placeholder">
+                      <span className="placeholder-icon">👤</span>
+                    </div>
+                  </div>
+                  <div className="member-info">
+                    <h4>Abubaker Patan, Ph.D.</h4>
+                    <p>Research Presenter</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="team-member"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <div className="member-photo">
+                    <div className="photo-placeholder">
+                      <span className="placeholder-icon">👤</span>
+                    </div>
+                  </div>
+                  <div className="member-info">
+                    <h4>Prof. Pieter C. Dorrestein</h4>
+                    <p>Principal Investigator</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="team-member"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  <div className="member-photo">
+                    <div className="photo-placeholder">
+                      <span className="placeholder-icon">👤</span>
+                    </div>
+                  </div>
+                  <div className="member-info">
+                    <h4>Prof. Siegel Dionicio</h4>
+                    <p>Co-Investigator</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="team-member"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  <div className="member-photo">
+                    <div className="photo-placeholder">
+                      <span className="placeholder-icon">👤</span>
+                    </div>
+                  </div>
+                  <div className="member-info">
+                    <h4>Shipei Xing</h4>
+                    <p>Research Scientist</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="team-member"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                >
+                  <div className="member-photo">
+                    <div className="photo-placeholder">
+                      <span className="placeholder-icon">👤</span>
+                    </div>
+                  </div>
+                  <div className="member-info">
+                    <h4>Vincent Lamoureux</h4>
+                    <p>Research Scientist</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="team-member"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  <div className="member-photo">
+                    <div className="photo-placeholder">
+                      <span className="placeholder-icon">👤</span>
+                    </div>
+                  </div>
+                  <div className="member-info">
+                    <h4>Helena Mannochio Russo</h4>
+                    <p>Research Scientist</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="team-member"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                >
+                  <div className="member-photo">
+                    <div className="photo-placeholder">
+                      <span className="placeholder-icon">👥</span>
+                    </div>
+                  </div>
+                  <div className="member-info">
+                    <h4>Lab Members & Collaborators</h4>
+                    <p>Global Research Network</p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Platform Logos */}
             <div className="platform-logos">
-              <motion.div 
+              <motion.div
                 className="logo-grid"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.5 }}
+                transition={{ duration: 1, delay: 0.9 }}
               >
                 <div className="platform-logo">GNPS</div>
                 <div className="platform-logo">ReDU</div>
@@ -448,16 +631,6 @@ function App() {
                 <div className="platform-logo">ReDU</div>
               </motion.div>
             </div>
-
-            <motion.div 
-              className="acknowledgments"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.8 }}
-            >
-              <h3>Acknowledgments</h3>
-              <p>Prof. Pieter C. Dorrestein, Prof. Siegel Dionicio, Shipei Xing, Vincent Lamoureux, Helena Mannochio Russo, and all lab members and collaborators.</p>
-            </motion.div>
           </div>
         </section>
       </ScrollContainer>
