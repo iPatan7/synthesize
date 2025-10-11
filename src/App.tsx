@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import ScrollContainer from './components/ScrollContainer';
 // import LiveChart from './components/LiveChart';
 import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
 import './App.css';
 
 function App() {
@@ -29,9 +28,50 @@ function App() {
     <div className="App" ref={containerRef}>
       <Navbar isDark={isThemeDark} scrollProgress={scrollProgress} onThemeToggle={handleThemeToggle} />
       <ScrollContainer onScrollProgress={handleScrollProgress}>
-        {/* Hero Section - Video Background */}
-        <section className="hero-section">
-          <HeroSection />
+        {/* Hero Section - Using Breakthrough Styling */}
+        <section className="breakthrough-section hero-breakthrough">
+          <div className="breakthrough-content">
+            <motion.h1 
+              className="breakthrough-title hero-title"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+            >
+              Charting the Undiscovered Metabolome
+            </motion.h1>
+            
+            <motion.div 
+              className="breakthrough-text hero-text"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+            >
+              <p className="breakthrough-question">How do you turn the unknown into the known?</p>
+              <p className="breakthrough-description">
+                We applied a strategy called <strong>Reverse Metabolomics</strong>: searching our new synthetic library against massive public data repositories.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="breakthrough-stats hero-stats"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
+              <div className="stat-card">
+                <span className="stat-number">3.4%</span>
+                <span className="stat-label">to 6.8% annotated</span>
+              </div>
+              <div className="stat-card">
+                <span className="stat-number">60,146,352</span>
+                <span className="stat-label">MS/MS spectra matches</span>
+              </div>
+              <div className="stat-card">
+                <span className="stat-number">15,000+</span>
+                <span className="stat-label">distinct molecules</span>
+              </div>
+            </motion.div>
+          </div>
         </section>
 
         {/* Transition Section - Synthetic Multiplexing */}
@@ -141,43 +181,6 @@ function App() {
           </div>
         </section>
 
-        {/* Awakening Section - Bringing the Dark Metabolome to Light */}
-        <section className="awakening-section">
-          <div className="awakening-container">
-            <video 
-              src="/videos/2.mp4" 
-              className="awakening-video"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-            />
-            <div className="content-overlay">
-              <motion.h2
-                className="section-title"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-              >
-                Bringing the Dark Metabolome to Light
-              </motion.h2>
-
-              <motion.div
-                className="section-text"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.3 }}
-              >
-                <p>
-                  Using <strong>Reverse Metabolomics</strong>, we searched our new synthetic library against massive public data repositories, effectively turning the unknown into the known.
-                  <br/><br/>
-                  This breakthrough doubled the annotation rate of all public MS/MS data, matching over <strong>60 million spectra</strong> and bringing <strong>15,000 molecules</strong> out of the dark.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
 
         {/* Case Study 1: Drug Metabolism */}
         <section className="case-study-section">
@@ -317,6 +320,43 @@ function App() {
           </div>
         </section>
 
+        {/* Awakening Section - Bringing the Dark Metabolome to Light */}
+        <section className="awakening-section">
+          <div className="awakening-container">
+            <video 
+              src="/videos/2.mp4" 
+              className="awakening-video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
+            <div className="content-overlay">
+              <motion.h2
+                className="section-title"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                Bringing the Dark Metabolome to Light
+              </motion.h2>
+
+              <motion.div
+                className="section-text"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
+              >
+                <p>
+                  Using <strong>Reverse Metabolomics</strong>, we searched our new synthetic library against massive public data repositories, effectively turning the unknown into the known.
+                  <br/><br/>
+                  This breakthrough doubled the annotation rate of all public MS/MS data, matching over <strong>60 million spectra</strong> and bringing <strong>15,000 molecules</strong> out of the dark.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
 
         {/* Team Section */}
         <section id="team" className="team-section">
@@ -452,6 +492,46 @@ function App() {
             </div>
           </div>
         </section>
+
+        {/* Footer */}
+        <footer className="app-footer">
+          <div className="footer-content">
+            <div className="footer-section">
+              <h3>The Dorrestein Laboratory</h3>
+              <p>UC San Diego</p>
+              <p>Charting the Undiscovered Metabolome</p>
+            </div>
+            
+            <div className="footer-section">
+              <h4>Research</h4>
+              <ul>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#data">Data</a></li>
+              </ul>
+            </div>
+            
+            <div className="footer-section">
+              <h4>Platforms</h4>
+              <ul>
+                <li><a href="https://gnps.ucsd.edu" target="_blank" rel="noopener noreferrer">GNPS</a></li>
+                <li><a href="https://redu.ucsd.edu" target="_blank" rel="noopener noreferrer">ReDU</a></li>
+                <li><a href="https://massive.ucsd.edu" target="_blank" rel="noopener noreferrer">MassIVE</a></li>
+                <li><a href="https://masst.ucsd.edu" target="_blank" rel="noopener noreferrer">MASST</a></li>
+              </ul>
+            </div>
+            
+            <div className="footer-section">
+              <h4>Contact</h4>
+              <p>University of California, San Diego</p>
+              <p>La Jolla, CA 92093</p>
+            </div>
+          </div>
+          
+          <div className="footer-bottom">
+            <p>&copy; 2024 The Dorrestein Laboratory. All rights reserved.</p>
+          </div>
+        </footer>
       </ScrollContainer>
     </div>
   );
