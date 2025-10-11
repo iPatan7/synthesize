@@ -35,7 +35,9 @@
     "eject": "react-scripts eject",
     "server": "node server.js",
     "dev": "concurrently \"npm run server\" \"npm start\"",
-    "build:prod": "npm run build && npm run server"
+    "build:prod": "npm run build && npm run server",
+    "wordpress": "npm run build && ./upload-to-wordpress.sh",
+    "deploy": "npm run build && git add . && git commit -m 'Deploy: $(date)' && git push origin main"
   },
   "eslintConfig": {
     "extends": [
