@@ -1,0 +1,29 @@
+WORDPRESS UPLOAD INSTRUCTIONS
+============================
+
+1. Connect to your WordPress server via FTP or cPanel File Manager
+
+2. Navigate to your WordPress root directory (usually public_html)
+
+3. Upload the entire 'react-app' folder to your WordPress root directory
+
+4. Add the shortcode [metabolome_lab] to any WordPress page
+
+5. Your app will be available at: https://yourdomain.com/react-app/
+
+FILES TO UPLOAD:
+- Upload everything inside the 'react-app' folder
+- Make sure asset-manifest.json is included
+- Ensure all static files (CSS, JS) are uploaded
+
+WORDPRESS SHORTCODE:
+Add this to your theme's functions.php:
+
+[Copy the contents of wordpress-integration.php]
+
+Then use [metabolome_lab] in any page or post.
+
+TROUBLESHOOTING:
+- Check file permissions (755 for folders, 644 for files)
+- Verify all files uploaded correctly
+- Test direct URL: yourdomain.com/react-app/

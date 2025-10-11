@@ -609,8 +609,18 @@ body.light-theme .hero-section {
 }
 
 body.light-theme .hero-content h1 {
-  color: var(--text-primary);
-  text-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
+  color: #000000;
+  font-weight: 800;
+  text-shadow: 
+    0 0 10px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
 }
 
 body.light-theme .hero-content {
@@ -618,46 +628,70 @@ body.light-theme .hero-content {
 }
 
 body.light-theme .hero-content-wrapper {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.9) 50%, rgba(219, 234, 254, 0.85) 100%);
+  border: 2px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(59, 130, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
 }
 
 body.light-theme .hero-subtitle {
-  color: var(--text-secondary);
-  text-shadow: none;
+  color: #000000;
+  font-weight: 600;
+  text-shadow: 
+    0 0 8px rgba(0, 0, 0, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
 }
 
 body.light-theme .lab-location {
-  color: var(--text-muted);
-  text-shadow: none;
+  color: #1a1a1a;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 body.light-theme .hero-stat {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.9) 100%);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(59, 130, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(15px);
 }
 
 body.light-theme .hero-stat .stat-number {
-  color: var(--accent-primary);
-  text-shadow: none;
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: #000000;
+  font-weight: 800;
+  text-shadow: 
+    0 0 10px rgba(0, 0, 0, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.3));
 }
 
 body.light-theme .hero-stat .stat-label {
-  color: var(--text-secondary);
-  text-shadow: none;
+  color: #1a1a1a;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 body.light-theme .lab-badge {
-  color: var(--accent-primary);
-  text-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #000000;
+  font-weight: 700;
+  text-shadow: 
+    0 0 8px rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 248, 255, 0.8) 100%);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 body.light-theme .lab-location {
@@ -730,7 +764,7 @@ body.light-theme .hero-background {
 }
 
 body.light-theme .video-overlay {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.6) 100%);
+  background: linear-gradient(135deg, rgba(240, 248, 255, 0.3) 0%, rgba(219, 234, 254, 0.4) 50%, rgba(191, 219, 254, 0.5) 100%);
 }
 
 .hero-content {
