@@ -371,6 +371,8 @@ body.light-theme .navbar-mobile-link:hover {
 /* Scroll Container */
 .scroll-container {
   position: relative;
+  width: 100%;
+  min-height: 100vh;
 }
 
 /* Hero Section */
@@ -459,6 +461,59 @@ body.light-theme .hero-subtitle {
   color: #64748b;
 }
 
+/* Hero Stats */
+.hero-stats {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.stat-highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.stat-number {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #00d4ff;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  line-height: 1;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .stat-number {
+  color: #3b82f6;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.stat-label {
+  font-size: 1.2rem;
+  color: #cccccc;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0.5rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .stat-label {
+  color: #64748b;
+}
+
+.stat-description {
+  font-size: 1rem;
+  color: #888;
+  font-weight: 300;
+  margin-top: 1rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .stat-description {
+  color: #64748b;
+}
+
 .canvas-container {
   position: absolute;
   top: 0;
@@ -536,6 +591,90 @@ body.light-theme .transition-title {
   text-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
 }
 
+/* Transition Text */
+.transition-text {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.transition-question {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-style: italic;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .transition-question {
+  color: #0f172a;
+}
+
+.transition-description {
+  font-size: 1.2rem;
+  color: #cccccc;
+  line-height: 1.6;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .transition-description {
+  color: #475569;
+}
+
+/* Library Stats */
+.library-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.library-stats .stat-card {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .library-stats .stat-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.library-stats .stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #00d4ff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .library-stats .stat-number {
+  color: #3b82f6;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.library-stats .stat-label {
+  font-size: 0.9rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .library-stats .stat-label {
+  color: #64748b;
+}
+
 .molecule-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -581,16 +720,706 @@ body.light-theme .transition-title {
   transform: scale(1.05);
 }
 
-/* Knowledge Section */
-.knowledge-section {
+/* Breakthrough Section */
+.breakthrough-section {
   min-height: 100vh;
   background: linear-gradient(180deg, #0f3460 0%, #0a0a0a 100%);
   padding: 4rem 2rem;
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body.light-theme .knowledge-section {
+body.light-theme .breakthrough-section {
   background: linear-gradient(180deg, #cbd5e1 0%, #f8fafc 100%);
+}
+
+.breakthrough-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.breakthrough-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .breakthrough-title {
+  color: #0f172a;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.breakthrough-description {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.breakthrough-description p {
+  font-size: 1.2rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .breakthrough-description p {
+  color: #475569;
+}
+
+.breakthrough-description strong {
+  color: #00d4ff;
+  font-weight: 600;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .breakthrough-description strong {
+  color: #3b82f6;
+}
+
+/* Breakthrough Stats */
+.breakthrough-stats {
+  margin-bottom: 4rem;
+}
+
+.annotation-progress {
+  margin-bottom: 3rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .progress-bar {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d4ff, #0088cc);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .progress-fill {
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #888;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .progress-labels {
+  color: #64748b;
+}
+
+.spectra-matches {
+  text-align: center;
+}
+
+.big-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.big-number .number {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #00d4ff;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .big-number .number {
+  color: #3b82f6;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.big-number .label {
+  font-size: 1.2rem;
+  color: #cccccc;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .big-number .label {
+  color: #475569;
+}
+
+/* Case Study Sections */
+.case-study-section {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #16213e 0%, #1a1a2e 100%);
+  padding: 4rem 2rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .case-study-section {
+  background: linear-gradient(180deg, #e2e8f0 0%, #f1f5f9 100%);
+}
+
+.case-study-section.pregnancy {
+  background: linear-gradient(180deg, #1a1a2e 0%, #0f3460 100%);
+}
+
+body.light-theme .case-study-section.pregnancy {
+  background: linear-gradient(180deg, #f1f5f9 0%, #cbd5e1 100%);
+}
+
+.case-study-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.case-study-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .case-study-title {
+  color: #0f172a;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.case-study-description {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.case-study-description p {
+  font-size: 1.2rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .case-study-description p {
+  color: #475569;
+}
+
+.case-study-description strong {
+  color: #00d4ff;
+  font-weight: 600;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .case-study-description strong {
+  color: #3b82f6;
+}
+
+/* Molecular Network */
+.molecular-network {
+  margin: 3rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.network-visualization {
+  position: relative;
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+
+.molecule-node {
+  background: rgba(0, 212, 255, 0.1);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  min-width: 200px;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .molecule-node {
+  background: rgba(59, 130, 246, 0.1);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+}
+
+.molecule-node:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+}
+
+body.light-theme .molecule-node:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+}
+
+.molecule-name {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00d4ff;
+  margin-bottom: 0.5rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .molecule-name {
+  color: #3b82f6;
+}
+
+.derivative-count {
+  display: block;
+  font-size: 1rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .derivative-count {
+  color: #64748b;
+}
+
+/* Spectra Comparison */
+.spectra-comparison {
+  margin: 3rem 0;
+}
+
+.spectra-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.spectrum {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  min-width: 200px;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .spectrum {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.spectrum h4 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-align: center;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .spectrum h4 {
+  color: #0f172a;
+}
+
+.spectrum-bars {
+  display: flex;
+  align-items: end;
+  gap: 4px;
+  height: 100px;
+}
+
+.bar {
+  background: linear-gradient(to top, #00d4ff, #0088cc);
+  width: 20px;
+  border-radius: 2px;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .bar {
+  background: linear-gradient(to top, #3b82f6, #1d4ed8);
+}
+
+.cosine-score {
+  text-align: center;
+  padding: 1rem;
+}
+
+.score {
+  background: rgba(0, 212, 255, 0.2);
+  color: #00d4ff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .score {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+/* Ibuprofen-Carnitine Section */
+.ibuprofen-carnitine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  margin: 3rem 0;
+}
+
+.molecule-structure {
+  text-align: center;
+  background: rgba(0, 212, 255, 0.1);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .molecule-structure {
+  background: rgba(59, 130, 246, 0.1);
+  border: 2px solid rgba(59, 130, 246, 0.3);
+}
+
+.molecule-structure:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.5);
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+}
+
+body.light-theme .molecule-structure:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+}
+
+.molecule-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00d4ff;
+  margin-bottom: 0.5rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .molecule-name {
+  color: #3b82f6;
+}
+
+.molecule-formula {
+  font-size: 1.2rem;
+  color: #888;
+  font-family: 'Courier New', monospace;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .molecule-formula {
+  color: #64748b;
+}
+
+.carnitine-functions {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.function-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .function-icon {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.function-icon:hover {
+  background: rgba(0, 212, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+body.light-theme .function-icon:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.function-icon .icon {
+  font-size: 2rem;
+}
+
+.function-icon span {
+  font-size: 0.9rem;
+  color: #cccccc;
+  text-align: center;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .function-icon span {
+  color: #475569;
+}
+
+/* Team Section */
+.team-section {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0f3460 0%, #0a0a0a 100%);
+  padding: 4rem 2rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .team-section {
+  background: linear-gradient(180deg, #cbd5e1 0%, #f8fafc 100%);
+}
+
+.team-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.team-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .team-title {
+  color: #0f172a;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.team-description {
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team-description p {
+  font-size: 1.2rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .team-description p {
+  color: #475569;
+}
+
+.team-description strong {
+  color: #00d4ff;
+  font-weight: 600;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .team-description strong {
+  color: #3b82f6;
+}
+
+/* Researcher Highlight */
+.researcher-highlight {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.researcher-card {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 136, 204, 0.1) 100%);
+  border: 2px solid rgba(0, 212, 255, 0.4);
+  border-radius: 25px;
+  padding: 3rem 4rem;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .researcher-card {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(29, 78, 216, 0.1) 100%);
+  border: 2px solid rgba(59, 130, 246, 0.4);
+  box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
+}
+
+.researcher-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+  border-color: rgba(0, 212, 255, 0.6);
+}
+
+body.light-theme .researcher-card:hover {
+  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+.researcher-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #00d4ff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .researcher-name {
+  color: #3b82f6;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.researcher-lab {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .researcher-lab {
+  color: #0f172a;
+}
+
+.researcher-institution {
+  font-size: 1.2rem;
+  color: #cccccc;
+  font-weight: 500;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .researcher-institution {
+  color: #475569;
+}
+
+.research-presentation {
+  font-size: 1.3rem;
+  color: #ffffff;
+  font-weight: 500;
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.6;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .research-presentation {
+  color: #0f172a;
+}
+
+.research-presentation strong {
+  color: #00d4ff;
+  font-weight: 700;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .research-presentation strong {
+  color: #3b82f6;
+}
+
+.platform-logos {
+  margin: 3rem 0;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.platform-logo {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 15px;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: #00d4ff;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .platform-logo {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #3b82f6;
+}
+
+.platform-logo:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(0, 212, 255, 0.2);
+}
+
+body.light-theme .platform-logo:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2);
+}
+
+.acknowledgments {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .acknowledgments {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.acknowledgments h3 {
+  color: #00d4ff;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .acknowledgments h3 {
+  color: #3b82f6;
+}
+
+.acknowledgments p {
+  color: #cccccc;
+  line-height: 1.6;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-theme .acknowledgments p {
+  color: #475569;
 }
 
 .knowledge-content {

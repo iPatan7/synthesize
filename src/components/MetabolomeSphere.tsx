@@ -18,11 +18,16 @@ const MetabolomeSphere: React.FC<MetabolomeSphereProps> = ({ isDark, scrollProgr
     for (let i = 0; i < 1000; i++) {
       const radius = 1.2 + Math.random() * 0.3;
       const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
+      const phi = Math.acos(Math.max(-1, Math.min(1, 2 * Math.random() - 1)));
       
-      temp[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
-      temp[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
-      temp[i * 3 + 2] = radius * Math.cos(phi);
+      const x = radius * Math.sin(phi) * Math.cos(theta);
+      const y = radius * Math.sin(phi) * Math.sin(theta);
+      const z = radius * Math.cos(phi);
+      
+      // Ensure no NaN values
+      temp[i * 3] = isNaN(x) ? 0 : x;
+      temp[i * 3 + 1] = isNaN(y) ? 0 : y;
+      temp[i * 3 + 2] = isNaN(z) ? 0 : z;
     }
     return temp;
   }, []);

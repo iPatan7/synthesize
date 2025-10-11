@@ -23,7 +23,7 @@ const ScrollContainer: React.FC<ScrollContainerProps> = ({ children, onScrollPro
 
   // Notify parent of scroll progress
   useEffect(() => {
-    const unsubscribe = smoothProgress.onChange((latest) => {
+    const unsubscribe = smoothProgress.on("change", (latest) => {
       onScrollProgress?.(latest);
     });
     return unsubscribe;
