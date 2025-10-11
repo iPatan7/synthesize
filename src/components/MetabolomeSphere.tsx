@@ -1,6 +1,6 @@
-import React, { useRef, useMemo, useEffect } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Sphere, MeshDistortMaterial, Points, PointMaterial } from '@react-three/drei';
+import { Sphere, Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface MetabolomeSphereProps {

@@ -17,3 +17,4 @@ The video will be used as a background in the breakthrough section with:
 - Reduced brightness (0.7)
 - Auto-play, loop, muted
 - Responsive scaling
+

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useScroll, useSpring } from 'framer-motion';
 import Lenis from 'lenis';
 
 interface ScrollContainerProps {

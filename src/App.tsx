@@ -1,24 +1,18 @@
 import React, { useState, useRef } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment } from '@react-three/drei';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import ScrollContainer from './components/ScrollContainer';
-import MetabolomeSphere from './components/MetabolomeSphere';
-import LiveChart from './components/LiveChart';
+// import LiveChart from './components/LiveChart';
 import Navbar from './components/Navbar';
-import ScrollVideo from './components/ScrollVideo';
+import HeroSection from './components/HeroSection';
 import './App.css';
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [isDark, setIsDark] = useState(true);
   const [isThemeDark, setIsThemeDark] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleScrollProgress = (progress: number) => {
     setScrollProgress(progress);
-    // Transition from dark to light based on scroll progress
-    setIsDark(progress < 0.5);
   };
 
   const handleThemeToggle = () => {
@@ -35,67 +29,9 @@ function App() {
     <div className="App" ref={containerRef}>
       <Navbar isDark={isThemeDark} scrollProgress={scrollProgress} onThemeToggle={handleThemeToggle} />
       <ScrollContainer onScrollProgress={handleScrollProgress}>
-        {/* Hero Section - Dark Metabolome */}
+        {/* Hero Section - Video Background */}
         <section className="hero-section">
-          <div className="hero-background">
-            <div className="video-overlay"></div>
-          </div>
-          
-          <div className="hero-content">
-            <motion.h1 
-              className="hero-title"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-            >
-              Into the Dark Metabolome
-            </motion.h1>
-            
-            <motion.div 
-              className="hero-stats"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.0 }}
-            >
-              <div className="stat-highlight">
-                <span className="stat-number">96.6%</span>
-                <span className="stat-label">unannotated</span>
-              </div>
-              <div className="stat-description">
-                Of the 1.75 billion mass spectra publicly available
-              </div>
-            </motion.div>
-            
-            <motion.p 
-              className="hero-subtitle"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.2 }}
-            >
-              Our mission is to bring these unknown molecules into the light
-            </motion.p>
-          </div>
-
-          <div className="canvas-container">
-            <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-              <ambientLight intensity={0.2} />
-              <pointLight position={[10, 10, 10]} intensity={0.5} />
-              <pointLight position={[-10, -10, -10]} intensity={0.3} />
-              <MetabolomeSphere isDark={isDark} scrollProgress={scrollProgress} />
-              <OrbitControls enableZoom={false} enablePan={false} />
-              <Environment preset="night" />
-            </Canvas>
-          </div>
-
-          <motion.div 
-            className="scroll-indicator"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2 }}
-          >
-            <div className="scroll-arrow"></div>
-            <p>Scroll to discover</p>
-          </motion.div>
+          <HeroSection />
         </section>
 
         {/* Transition Section - Synthetic Multiplexing */}
@@ -161,116 +97,62 @@ function App() {
 
         {/* Breakthrough Section - Doubling Our Known Universe */}
         <section className="breakthrough-section">
-          <div className="breakthrough-container">
-            <video
-              className="background-video"
-              autoPlay
-              loop
-              muted
-              playsInline
-              src="/videos/1.mp4"
-            />
-            <div className="content-overlay">
-              <motion.h2
-                className="section-title"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-              >
-                Doubling Our Known Universe
-              </motion.h2>
-
-              <motion.div
-                className="section-text"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.3 }}
-              >
-                <p>
-                  We applied a strategy called <strong>Reverse Metabolomics</strong>: searching our new synthetic library against massive public data repositories.
-                  <br/><br/>
-                  The result: we doubled the annotation rate of all public MS/MS data, matching over <strong>60 million spectra</strong> and identifying over <strong>15,000 distinct molecules</strong>.
-                </p>
-              </motion.div>
-            </div>
-
-            <div className="breakthrough-stats">
-              <motion.div 
-                className="annotation-progress"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                <div className="progress-bar">
-                  <motion.div 
-                    className="progress-fill"
-                    initial={{ width: "3.4%" }}
-                    whileInView={{ width: "6.8%" }}
-                    transition={{ duration: 2, delay: 0.5 }}
-                  />
-                </div>
-                <div className="progress-labels">
-                  <span className="before">3.4% annotated</span>
-                  <span className="after">6.8% annotated</span>
-                </div>
-              </motion.div>
-
-              <div className="spectra-matches">
-                <motion.div
-                  className="big-number"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: 1 }}
-                >
-                  <span className="number">60,146,352</span>
-                  <span className="label">MS/MS spectra matches</span>
-                </motion.div>
+          <div className="breakthrough-content">
+            <motion.h2 
+              className="breakthrough-title"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+            >
+              Doubling Our Known Universe
+            </motion.h2>
+            
+            <motion.div 
+              className="breakthrough-text"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+            >
+              <p className="breakthrough-question">How do you turn the unknown into the known?</p>
+              <p className="breakthrough-description">
+                We applied a strategy called <strong>Reverse Metabolomics</strong>: searching our new synthetic library against massive public data repositories.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="breakthrough-stats"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
+              <div className="stat-card">
+                <span className="stat-number">3.4%</span>
+                <span className="stat-label">to 6.8% annotated</span>
               </div>
-            </div>
-
-            <div className="dashboard">
-              <div className="chart-section">
-                <LiveChart isVisible={scrollProgress > 0.6} />
+              <div className="stat-card">
+                <span className="stat-number">60,146,352</span>
+                <span className="stat-label">MS/MS spectra matches</span>
               </div>
-
-              <div className="stats-grid">
-                <motion.div
-                  className="stat-card"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                >
-                  <h3>Distinct Molecules</h3>
-                  <div className="stat-number">15,000+</div>
-                </motion.div>
-
-                <motion.div
-                  className="stat-card"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  <h3>Annotation Rate</h3>
-                  <div className="stat-number">Doubled</div>
-                </motion.div>
-
-                <motion.div
-                  className="stat-card"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  <h3>Public Repositories</h3>
-                  <div className="stat-number">Multiple</div>
-                </motion.div>
+              <div className="stat-card">
+                <span className="stat-number">15,000+</span>
+                <span className="stat-label">distinct molecules</span>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* Awakening Section - Bringing the Dark Metabolome to Light */}
         <section className="awakening-section">
-          <ScrollVideo src="/videos/2.mp4" className="awakening-container">
+          <div className="awakening-container">
+            <video 
+              src="/videos/2.mp4" 
+              className="awakening-video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
             <div className="content-overlay">
               <motion.h2
                 className="section-title"
@@ -294,7 +176,7 @@ function App() {
                 </p>
               </motion.div>
             </div>
-          </ScrollVideo>
+          </div>
         </section>
 
         {/* Case Study 1: Drug Metabolism */}
@@ -435,37 +317,9 @@ function App() {
           </div>
         </section>
 
-        {/* Final Video Section - The Future of Metabolomics */}
-        <section className="final-video-section">
-          <ScrollVideo src="/videos/3.mp4" className="final-video-container">
-            <div className="content-overlay">
-              <motion.h2
-                className="section-title"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-              >
-                The Future of Metabolomics
-              </motion.h2>
-
-              <motion.div
-                className="section-text"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.3 }}
-              >
-                <p>
-                  This is just the beginning. Our <strong>Reverse Metabolomics</strong> approach opens new frontiers in understanding the molecular complexity of life.
-                  <br/><br/>
-                  With <strong>15,000+ newly identified molecules</strong> and counting, we're building the foundation for the next generation of precision medicine and personalized therapeutics.
-                </p>
-              </motion.div>
-            </div>
-          </ScrollVideo>
-        </section>
 
         {/* Team Section */}
-        <section className="team-section">
+        <section id="team" className="team-section">
           <div className="team-content">
             <motion.h2
               className="team-title"
@@ -494,12 +348,7 @@ function App() {
             >
               <h3>Research Team</h3>
               <div className="team-grid">
-                <motion.div
-                  className="team-member"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                >
+                <div className="team-member">
                   <div className="member-photo">
                     <div className="photo-placeholder">
                       <span className="placeholder-icon">👤</span>
@@ -509,14 +358,9 @@ function App() {
                     <h4>Abubaker Patan, Ph.D.</h4>
                     <p>Research Presenter</p>
                   </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  className="team-member"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
+                <div className="team-member">
                   <div className="member-photo">
                     <div className="photo-placeholder">
                       <span className="placeholder-icon">👤</span>
@@ -526,14 +370,9 @@ function App() {
                     <h4>Prof. Pieter C. Dorrestein</h4>
                     <p>Principal Investigator</p>
                   </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  className="team-member"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
+                <div className="team-member">
                   <div className="member-photo">
                     <div className="photo-placeholder">
                       <span className="placeholder-icon">👤</span>
@@ -543,14 +382,9 @@ function App() {
                     <h4>Prof. Siegel Dionicio</h4>
                     <p>Co-Investigator</p>
                   </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  className="team-member"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
+                <div className="team-member">
                   <div className="member-photo">
                     <div className="photo-placeholder">
                       <span className="placeholder-icon">👤</span>
@@ -560,14 +394,9 @@ function App() {
                     <h4>Shipei Xing</h4>
                     <p>Research Scientist</p>
                   </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  className="team-member"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                >
+                <div className="team-member">
                   <div className="member-photo">
                     <div className="photo-placeholder">
                       <span className="placeholder-icon">👤</span>
@@ -577,14 +406,9 @@ function App() {
                     <h4>Vincent Lamoureux</h4>
                     <p>Research Scientist</p>
                   </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  className="team-member"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                >
+                <div className="team-member">
                   <div className="member-photo">
                     <div className="photo-placeholder">
                       <span className="placeholder-icon">👤</span>
@@ -594,14 +418,9 @@ function App() {
                     <h4>Helena Mannochio Russo</h4>
                     <p>Research Scientist</p>
                   </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  className="team-member"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
-                >
+                <div className="team-member">
                   <div className="member-photo">
                     <div className="photo-placeholder">
                       <span className="placeholder-icon">👥</span>
@@ -611,7 +430,7 @@ function App() {
                     <h4>Lab Members & Collaborators</h4>
                     <p>Global Research Network</p>
                   </div>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
 
