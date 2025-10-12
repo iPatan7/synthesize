@@ -7,6 +7,7 @@ import BreakthroughSection from './components/BreakthroughSection';
 import CaseStudySection from './components/CaseStudySection';
 import AwakeningSection from './components/AwakeningSection';
 import TeamSection from './components/TeamSection';
+import PartnersSection from './components/PartnersSection';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -39,6 +40,7 @@ function App() {
         <CaseStudySection />
         <AwakeningSection />
         <TeamSection />
+        <PartnersSection />
         <Footer />
       </ScrollContainer>
     </div>
