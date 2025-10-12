@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import CompoundsTable from './CompoundsTable';
 
 interface BreakthroughSectionProps {
   // Add any props you might need
 }
 
 const BreakthroughSection: React.FC<BreakthroughSectionProps> = () => {
+  const [isTableExpanded, setIsTableExpanded] = useState(false);
+
+  const toggleTable = () => {
+    setIsTableExpanded(!isTableExpanded);
+  };
+
   return (
     <section className="breakthrough-section">
       <div className="breakthrough-content">
@@ -51,6 +58,38 @@ const BreakthroughSection: React.FC<BreakthroughSectionProps> = () => {
             <span className="stat-number">15,000+</span>
             <span className="stat-label">distinct molecules</span>
           </div>
+        </motion.div>
+
+        {/* Expandable Compounds Table */}
+        <motion.div 
+          className="compounds-section"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.9 }}
+          viewport={{ once: true }}
+        >
+          <div className="compounds-header">
+            <h3 className="compounds-title">Synthetic Compound Library</h3>
+            <p className="compounds-description">
+              Explore our comprehensive library of bile acid derivatives and related compounds used in the reverse metabolomics approach.
+            </p>
+            <motion.button
+              className="toggle-table-btn"
+              onClick={toggleTable}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {isTableExpanded ? 'Hide' : 'Show'} Compound Data
+              <span className="toggle-icon">
+                {isTableExpanded ? '▲' : '▼'}
+              </span>
+            </motion.button>
+          </div>
+          
+          <CompoundsTable 
+            isExpanded={isTableExpanded} 
+            onToggle={toggleTable} 
+          />
         </motion.div>
       </div>
     </section>

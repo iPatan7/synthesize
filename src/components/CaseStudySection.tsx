@@ -94,7 +94,7 @@ const CaseStudySection: React.FC<CaseStudySectionProps> = () => {
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            Ibuprofen, Pregnancy, and Performance
+            Novel Drug-Metabolite Conjugate Discovery: Ibuprofen-Carnitine
           </motion.h2>
           
           <motion.div 
@@ -104,55 +104,232 @@ const CaseStudySection: React.FC<CaseStudySectionProps> = () => {
             transition={{ duration: 1, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <p>We identified a novel conjugate: <strong>Ibuprofen-Carnitine</strong>, found in human urine.</p>
-            <p>L-carnitine is a key metabolite for energy metabolism and is known to reduce inflammation and oxidative stress after exercise. This discovery opens new avenues for understanding how drugs may interact with crucial metabolic pathways related to health and recovery.</p>
+            <p>Our investigation uncovered a previously unknown molecule present in the human body after the use of a common painkiller: <strong>Ibuprofen-Carnitine</strong>. This novel conjugate reveals a direct link between a widely used drug and one of the body's most crucial metabolic pathways.</p>
+            <p>The second part of this molecule, <strong>L-carnitine</strong>, is a vital compound synthesized in the liver, kidney, and brain. It's renowned for its role in cellular energy and is a key player in protecting the body from stress.</p>
+            <p>This discovery is more than just a chemical footnote; it opens a new frontier of questions. How does the conjugation of a drug to a vital metabolite like L-carnitine affect our energy systems, our response to inflammation, and our ability to recover from physical exertion?</p>
           </motion.div>
 
-          <div className="ibuprofen-carnitine">
+          {/* Interactive Molecular Reveal */}
+          <div className="molecular-reveal">
             <motion.div 
-              className="molecule-structure"
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              className="molecules-container"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
               viewport={{ once: true }}
             >
-              <div className="molecule-name">Ibuprofen-Carnitine</div>
-              <div className="molecule-formula">C₁₃H₁₈O₂-C₇H₁₅NO₃</div>
+              <motion.div 
+                className="molecule ibuprofen"
+                initial={{ x: -200, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.7 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05, y: -10 }}
+              >
+                <div className="molecule-structure">
+                  <div className="molecule-icon">💊</div>
+                  <div className="molecule-name">Ibuprofen</div>
+                  <div className="molecule-formula">C₁₃H₁₈O₂</div>
+                  <div className="molecule-class">NSAID • Anti-inflammatory</div>
+                  <div className="molecule-hover-info">
+                    <div className="hover-title">Drug Properties</div>
+                    <div className="hover-details">
+                      <p>• Non-steroidal anti-inflammatory drug</p>
+                      <p>• Inhibits cyclooxygenase enzymes</p>
+                      <p>• Common over-the-counter medication</p>
+                      <p>• Used for pain and inflammation relief</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="conjugation-arrow"
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 1.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="arrow-icon">+</div>
+                <div className="arrow-text">Conjugation</div>
+              </motion.div>
+
+              <motion.div 
+                className="molecule carnitine"
+                initial={{ x: 200, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.9 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05, y: -10 }}
+              >
+                <div className="molecule-structure">
+                  <div className="molecule-icon">⚡</div>
+                  <div className="molecule-name">L-Carnitine</div>
+                  <div className="molecule-formula">C₇H₁₅NO₃</div>
+                  <div className="molecule-class">Essential Metabolite • Energy Shuttle</div>
+                  <div className="molecule-hover-info">
+                    <div className="hover-title">Metabolic Functions</div>
+                    <div className="hover-details">
+                      <p>• Transports fatty acids into mitochondria</p>
+                      <p>• Essential for cellular energy production</p>
+                      <p>• Synthesized in liver, kidney, and brain</p>
+                      <p>• Protects against oxidative stress</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
+
+            <motion.div 
+              className="conjugate-result"
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 1.5 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02, y: -5 }}
+            >
+              <div className="molecule-structure conjugate">
+                <motion.div 
+                  className="conjugate-icon"
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  transition={{ duration: 1.2, delay: 1.7, type: "spring", stiffness: 200 }}
+                  viewport={{ once: true }}
+                >
+                  🔬
+                </motion.div>
+                <motion.div 
+                  className="molecule-name"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.9 }}
+                  viewport={{ once: true }}
+                >
+                  Ibuprofen-Carnitine
+                </motion.div>
+                <motion.div 
+                  className="molecule-formula"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 2.0 }}
+                  viewport={{ once: true }}
+                >
+                  C₁₃H₁₈O₂-C₇H₁₅NO₃
+                </motion.div>
+                <motion.div 
+                  className="molecule-class"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 2.1 }}
+                  viewport={{ once: true }}
+                >
+                  Novel Conjugate • Drug-Metabolite
+                </motion.div>
+                <motion.div 
+                  className="discovery-badge"
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 2.3, type: "spring", stiffness: 300 }}
+                  viewport={{ once: true }}
+                >
+                  First Discovery
+                </motion.div>
+                <motion.div 
+                  className="research-impact"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 2.4 }}
+                  viewport={{ once: true }}
+                >
+                  Human Urine Metabolite
+                </motion.div>
+                <div className="molecule-hover-info discovery-hover">
+                  <div className="hover-title">Discovery Significance</div>
+                  <div className="hover-details">
+                    <p>• First reported drug-carnitine conjugate in humans</p>
+                    <p>• Identified through reverse metabolomics approach</p>
+                    <p>• Found in urine samples from clinical studies</p>
+                    <p>• Opens new understanding of drug metabolism</p>
+                    <p>• Potential implications for drug efficacy and safety</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Animated Function Cards */}
+          <div className="carnitine-functions">
+            <motion.h3 
+              className="functions-title"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.8 }}
+              viewport={{ once: true }}
+            >
+              L-Carnitine's Vital Functions
+            </motion.h3>
             
-            <div className="carnitine-functions">
+            <div className="function-cards">
               <motion.div 
-                className="function-icon"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
+                className="function-card"
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: 2.0 }}
                 viewport={{ once: true }}
+                whileHover={{ scale: 1.05, y: -5 }}
               >
-                <div className="icon">⚡</div>
-                <span>Energy Metabolism</span>
+                <div className="card-icon">⚡</div>
+                <h4 className="card-title">Energy Metabolism</h4>
+                <p className="card-description">
+                  L-carnitine's primary role is to transport fatty acids into mitochondria, acting as a crucial shuttle for cellular energy production.
+                </p>
               </motion.div>
+
               <motion.div 
-                className="function-icon"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.9 }}
+                className="function-card"
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: 2.2 }}
                 viewport={{ once: true }}
+                whileHover={{ scale: 1.05, y: -5 }}
               >
-                <div className="icon">🛡️</div>
-                <span>Antioxidant</span>
+                <div className="card-icon">🛡️</div>
+                <h4 className="card-title">Potent Antioxidant</h4>
+                <p className="card-description">
+                  It helps protect the neuromuscular system by neutralizing excess reactive oxygen and nitrogen species that can damage DNA, lipids, and proteins.
+                </p>
               </motion.div>
+
               <motion.div 
-                className="function-icon"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.1 }}
+                className="function-card"
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: 2.4 }}
                 viewport={{ once: true }}
+                whileHover={{ scale: 1.05, y: -5 }}
               >
-                <div className="icon">💪</div>
-                <span>Muscle Recovery</span>
+                <div className="card-icon">💪</div>
+                <h4 className="card-title">Muscle Recovery</h4>
+                <p className="card-description">
+                  By reducing exercise-induced muscle damage and inflammation, L-carnitine supplementation can aid in post-exercise recovery.
+                </p>
               </motion.div>
             </div>
           </div>
+
+          {/* Impact Statement */}
+          <motion.div 
+            className="impact-statement"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 2.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="impact-content">
+              <h3>Opening New Frontiers</h3>
+              <p>This discovery opens new avenues for understanding how drugs may interact with crucial metabolic pathways related to health, recovery, and performance. The implications extend far beyond pain management, potentially revolutionizing our understanding of drug-metabolite interactions.</p>
+            </div>
+          </motion.div>
         </div>
       </section>
     </>
