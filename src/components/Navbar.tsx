@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import logoImage from '../assets/logo.png';
 
 interface NavbarProps {
   isDark: boolean;
@@ -32,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, scrollProgress, onThemeToggle }
             <a href="#home" className="navbar-logo-link">
               <div className="navbar-logo-icon">
                 <img 
-                  src={process.env.PUBLIC_URL + "/img/logo.png"} 
+                  src={logoImage} 
                   alt="UCSD Logo" 
                   className="navbar-logo-image"
                   onError={(e) => {
