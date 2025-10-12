@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, scrollProgress, onThemeToggle }
             <a href="#home" className="navbar-logo-link">
               <div className="navbar-logo-icon">
                 <img 
-                  src="./img/logo.png" 
+                  src="/img/logo.png" 
                   alt="UCSD Logo" 
                   className="navbar-logo-image"
                   onError={(e) => {
