@@ -8,17 +8,20 @@ interface HeroSectionProps {
 const HeroSection: React.FC<HeroSectionProps> = () => {
   return (
     <section className="hero-section">
+      {/* Full Background Video */}
+      <video 
+        src={`${process.env.PUBLIC_URL}/videos/metabolome-intro.mp4`} 
+        className="hero-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      />
+      <div className="video-overlay" />
+      
       <div className="hero-container">
-        <video 
-          src="/videos/metabolome-intro.mp4" 
-          className="hero-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-        <div className="video-overlay" />
+        {/* Content Overlay */}
         <div className="hero-content-wrapper">
           <motion.div 
             className="hero-content"

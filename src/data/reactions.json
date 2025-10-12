@@ -1,0 +1,198 @@
+{
+  "centralMolecule": {
+    "name": "Cholic Acid",
+    "formula": "C₂₄H₄₀O₅",
+    "description": "Primary bile acid used as starting material"
+  },
+  "reactionGroups": [
+    {
+      "name": "Esterification",
+      "color": "#00aaff",
+      "description": "Formation of ester bonds",
+      "reactions": [
+        {
+          "productName": "Cholic acid ethyl ester",
+          "reagents": "Ethanol, H₂SO₄",
+          "formula": "C₂₆H₄₄O₅"
+        },
+        {
+          "productName": "Cholic acid methyl ester",
+          "reagents": "Methanol, H₂SO₄",
+          "formula": "C₂₅H₄₂O₅"
+        }
+      ]
+    },
+    {
+      "name": "Amidation",
+      "color": "#ff00aa",
+      "description": "Formation of amide bonds",
+      "reactions": [
+        {
+          "productName": "Cholic acid amide",
+          "reagents": "EDC, DIPEA",
+          "formula": "C₂₄H₄₁NO₄"
+        },
+        {
+          "productName": "Cholic acid glycine conjugate",
+          "reagents": "Glycine, EDC",
+          "formula": "C₂₆H₄₃NO₆"
+        }
+      ]
+    },
+    {
+      "name": "Methylation",
+      "color": "#00ff88",
+      "description": "Addition of methyl groups",
+      "reactions": [
+        {
+          "productName": "3-Methyl cholic acid",
+          "reagents": "Methyl iodide, K₂CO₃",
+          "formula": "C₂₅H₄₂O₅"
+        },
+        {
+          "productName": "7-Methyl cholic acid",
+          "reagents": "Methyl iodide, NaH",
+          "formula": "C₂₅H₄₂O₅"
+        }
+      ]
+    },
+    {
+      "name": "Acylation",
+      "color": "#aa00ff",
+      "description": "Addition of acyl groups",
+      "reactions": [
+        {
+          "productName": "Cholic acid acetate",
+          "reagents": "Acetic anhydride, Pyridine",
+          "formula": "C₂₆H₄₂O₆"
+        },
+        {
+          "productName": "Cholic acid propionate",
+          "reagents": "Propionic anhydride",
+          "formula": "C₂₇H₄₄O₆"
+        }
+      ]
+    },
+    {
+      "name": "Sulfation",
+      "color": "#ffff00",
+      "description": "Addition of sulfate groups",
+      "reactions": [
+        {
+          "productName": "Cholic acid 3-sulfate",
+          "reagents": "SO₃·Pyridine",
+          "formula": "C₂₄H₄₀O₈S"
+        },
+        {
+          "productName": "Cholic acid 7-sulfate",
+          "reagents": "SO₃·Pyridine",
+          "formula": "C₂₄H₄₀O₈S"
+        }
+      ]
+    },
+    {
+      "name": "Hydroxylation",
+      "color": "#0066cc",
+      "description": "Addition of hydroxyl groups",
+      "reactions": [
+        {
+          "productName": "1α-Hydroxy cholic acid",
+          "reagents": "H₂O₂, FeSO₄",
+          "formula": "C₂₄H₄₀O₆"
+        },
+        {
+          "productName": "6α-Hydroxy cholic acid",
+          "reagents": "H₂O₂, Catalase",
+          "formula": "C₂₄H₄₀O₆"
+        }
+      ]
+    },
+    {
+      "name": "Glycosylation",
+      "color": "#00aaff",
+      "description": "Addition of sugar moieties",
+      "reactions": [
+        {
+          "productName": "Cholic acid glucoside",
+          "reagents": "Glucose, BF₃·Et₂O",
+          "formula": "C₃₀H₅₀O₁₀"
+        },
+        {
+          "productName": "Cholic acid galactoside",
+          "reagents": "Galactose, AgOTf",
+          "formula": "C₃₀H₅₀O₁₀"
+        }
+      ]
+    },
+    {
+      "name": "Reductive Amination",
+      "color": "#ff6666",
+      "description": "Formation of amine bonds",
+      "reactions": [
+        {
+          "productName": "Cholic acid amine",
+          "reagents": "NaBH₃CN, NH₃",
+          "formula": "C₂₄H₄₁NO₄"
+        },
+        {
+          "productName": "Cholic acid benzylamine",
+          "reagents": "Benzylamine, NaBH₃CN",
+          "formula": "C₃₁H₄₇NO₄"
+        }
+      ]
+    },
+    {
+      "name": "Oxidation",
+      "color": "#ffaa00",
+      "description": "Oxidation reactions",
+      "reactions": [
+        {
+          "productName": "3-Keto cholic acid",
+          "reagents": "PCC, CH₂Cl₂",
+          "formula": "C₂₄H₃₈O₅"
+        },
+        {
+          "productName": "7-Keto cholic acid",
+          "reagents": "Jones reagent",
+          "formula": "C₂₄H₃₈O₅"
+        }
+      ]
+    },
+    {
+      "name": "Ring Opening",
+      "color": "#66aaff",
+      "description": "Ring modification reactions",
+      "reactions": [
+        {
+          "productName": "Cholic acid lactone",
+          "reagents": "DCC, DMAP",
+          "formula": "C₂₄H₃₈O₄"
+        }
+      ]
+    },
+    {
+      "name": "Hydrolysis",
+      "color": "#cccccc",
+      "description": "Cleavage reactions",
+      "reactions": [
+        {
+          "productName": "Cholic acid fragments",
+          "reagents": "NaOH, H₂O",
+          "formula": "Various"
+        }
+      ]
+    },
+    {
+      "name": "Acyl Chloride",
+      "color": "#666666",
+      "description": "Acyl chloride formation",
+      "reactions": [
+        {
+          "productName": "Cholic acid acyl chloride",
+          "reagents": "SOCl₂, Pyridine",
+          "formula": "C₂₄H₃₉ClO₄"
+        }
+      ]
+    }
+  ]
+}
