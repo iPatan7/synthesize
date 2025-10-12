@@ -32,10 +32,20 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, scrollProgress, onThemeToggle }
             <a href="#home" className="navbar-logo-link">
               <div className="navbar-logo-icon">
                 <img 
-                  src="/img/logo.png" 
+                  src="./img/logo.png" 
                   alt="UCSD Logo" 
                   className="navbar-logo-image"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                    if (fallback) {
+                      fallback.style.display = 'flex';
+                    }
+                  }}
                 />
+                <div className="navbar-logo-fallback" style={{ display: 'none' }}>
+                  <span className="navbar-logo-text">UCSD</span>
+                </div>
               </div>
               <div className="navbar-brand-text">
                 <span className="navbar-brand">
