@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ReactionWheel from './ReactionWheel';
+import ChemistryFormulas from './ChemistryFormulas';
 
 interface TransitionSectionProps {
   // Add any props you might need
@@ -174,30 +175,8 @@ const TransitionSection: React.FC<TransitionSectionProps> = () => {
           <ReactionWheel className="paradigm-reaction-wheel" />
         </motion.div>
 
-        {/* Interactive molecular visualization */}
-        <motion.div 
-          className="molecular-visualization"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, delay: 2.0 }}
-          viewport={{ once: true }}
-        >
-          <div className="molecule-container">
-            <div className="molecule-3d">
-              <div className="atom atom-1"></div>
-              <div className="atom atom-2"></div>
-              <div className="atom atom-3"></div>
-              <div className="bond bond-1"></div>
-              <div className="bond bond-2"></div>
-            </div>
-            <div className="spectral-pattern">
-              <div className="spectral-line"></div>
-              <div className="spectral-line"></div>
-              <div className="spectral-line"></div>
-              <div className="spectral-line"></div>
-            </div>
-          </div>
-        </motion.div>
+        {/* Interactive chemistry formulas */}
+        <ChemistryFormulas />
       </motion.div>
     </section>
   );

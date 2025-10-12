@@ -9,6 +9,7 @@ import AwakeningSection from './components/AwakeningSection';
 import TeamSection from './components/TeamSection';
 import PartnersSection from './components/PartnersSection';
 import Footer from './components/Footer';
+import { ReactionProvider } from './contexts/ReactionContext';
 import './App.css';
 
 function App() {
@@ -31,19 +32,21 @@ function App() {
   };
 
   return (
-    <div className="App" ref={containerRef}>
-      <Navbar isDark={isThemeDark} scrollProgress={scrollProgress} onThemeToggle={handleThemeToggle} />
-      <ScrollContainer onScrollProgress={handleScrollProgress}>
-        <HeroSection />
-        <TransitionSection />
-        <BreakthroughSection />
-        <CaseStudySection />
-        <AwakeningSection />
-        <TeamSection />
-        <PartnersSection />
-        <Footer />
-      </ScrollContainer>
-    </div>
+    <ReactionProvider>
+      <div className="App" ref={containerRef}>
+        <Navbar isDark={isThemeDark} scrollProgress={scrollProgress} onThemeToggle={handleThemeToggle} />
+        <ScrollContainer onScrollProgress={handleScrollProgress}>
+          <HeroSection />
+          <TransitionSection />
+          <BreakthroughSection />
+          <CaseStudySection />
+          <AwakeningSection />
+          <TeamSection />
+          <PartnersSection />
+          <Footer />
+        </ScrollContainer>
+      </div>
+    </ReactionProvider>
   );
 }
 

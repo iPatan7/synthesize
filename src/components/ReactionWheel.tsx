@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import reactionsData from '../data/reactions.json';
+import { useReactionContext } from '../contexts/ReactionContext';
 
 interface Reaction {
   productName: string;
@@ -20,7 +21,16 @@ interface ReactionWheelProps {
 }
 
 const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
-  const [selectedGroup, setSelectedGroup] = useState<string | null>(null);
+  const { 
+    selectedGroup, 
+    hoveredGroup, 
+    selectedMolecule,
+    hoveredMolecule,
+    setSelectedGroup, 
+    setHoveredGroup, 
+    setSelectedMolecule,
+    setHoveredMolecule
+  } = useReactionContext();
   const [hoveredReaction, setHoveredReaction] = useState<Reaction | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -81,11 +91,12 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
         {reactionGroups.map((group: ReactionGroup, groupIndex: number) => {
           const position = getGroupPosition(groupIndex);
           const isSelected = selectedGroup === group.name;
+          const isHovered = hoveredGroup === group.name;
           
           return (
             <motion.div
               key={group.name}
-              className={`reaction-group ${isSelected ? 'selected' : ''}`}
+              className={`reaction-group ${isSelected ? 'selected' : ''} ${isHovered ? 'hovered' : ''}`}
               style={{
                 '--group-color': group.color,
                 left: `calc(50% + ${position.x}px)`,
@@ -112,6 +123,8 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
               }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedGroup(isSelected ? null : group.name)}
+              onMouseEnter={() => setHoveredGroup(group.name)}
+              onMouseLeave={() => setHoveredGroup(null)}
             >
               <div className="group-label">{group.name}</div>
               <div className="group-dot" />
@@ -127,29 +140,77 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
             const isSelected = selectedGroup === group.name;
             
             return (
-              <motion.line
-                key={`line-${groupIndex}`}
-                x1="400"
-                y1="400"
-                x2={400 + position.x}
-                y2={400 + position.y}
-                stroke={group.color}
-                strokeWidth={isSelected ? 4 : 2}
-                opacity={isSelected ? 1 : 0.4}
-                strokeDasharray={isSelected ? "0" : "5,5"}
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ 
-                  pathLength: 1, 
-                  opacity: isSelected ? 1 : 0.4,
-                  strokeWidth: isSelected ? 4 : 2
-                }}
-                transition={{ 
-                  duration: 1.2, 
-                  delay: 1.2 + groupIndex * 0.03,
-                  type: "spring",
-                  stiffness: 50
-                }}
-              />
+              <g key={`line-group-${groupIndex}`}>
+                {/* Glow effect for selected lines */}
+                {isSelected && (
+                  <motion.line
+                    x1="400"
+                    y1="400"
+                    x2={400 + position.x}
+                    y2={400 + position.y}
+                    stroke={group.color}
+                    strokeWidth="8"
+                    opacity="0.3"
+                    filter="blur(4px)"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ 
+                      pathLength: 1, 
+                      opacity: 0.3
+                    }}
+                    transition={{ 
+                      duration: 1.5, 
+                      delay: 0.1,
+                      ease: "easeOut"
+                    }}
+                  />
+                )}
+                
+                {/* Main connection line */}
+                <motion.line
+                  x1="400"
+                  y1="400"
+                  x2={400 + position.x}
+                  y2={400 + position.y}
+                  stroke={group.color}
+                  strokeWidth={isSelected ? 4 : 2}
+                  opacity={isSelected ? 1 : 0.4}
+                  strokeDasharray={isSelected ? "0" : "5,5"}
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ 
+                    pathLength: 1, 
+                    opacity: isSelected ? 1 : 0.4,
+                    strokeWidth: isSelected ? 4 : 2
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    delay: 1.2 + groupIndex * 0.05,
+                    type: "spring",
+                    stiffness: 80,
+                    damping: 20
+                  }}
+                />
+                
+                {/* Animated dots along the line */}
+                <motion.circle
+                  cx="400"
+                  cy="400"
+                  r="3"
+                  fill={group.color}
+                  opacity={isSelected ? 1 : 0.6}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ 
+                    scale: isSelected ? 1.5 : 1,
+                    opacity: isSelected ? 1 : 0.6
+                  }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: 1.5 + groupIndex * 0.05,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                />
+              </g>
             );
           })}
         </svg>
@@ -197,8 +258,15 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                     transition: { duration: 0.2 }
                   }}
                   whileTap={{ scale: 0.9 }}
-                  onMouseEnter={() => setHoveredReaction(reaction)}
-                  onMouseLeave={() => setHoveredReaction(null)}
+                  onMouseEnter={() => {
+                    setHoveredReaction(reaction);
+                    setHoveredMolecule(reaction.formula);
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredReaction(null);
+                    setHoveredMolecule(null);
+                  }}
+                  onClick={() => setSelectedMolecule(reaction.formula)}
                 >
                   <div className="product-dot" />
                   <div className="product-formula">{reaction.formula}</div>
@@ -221,21 +289,65 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                     reactionGroups[groupIndex].reactions.length);
                   
                   return (
-                    <motion.line
-                      key={`product-line-${reactionIndex}`}
-                      x1={400 + groupPos.x}
-                      y1={400 + groupPos.y}
-                      x2={400 + productPos.x}
-                      y2={400 + productPos.y}
-                      stroke={reactionGroups[groupIndex].color}
-                      strokeWidth="2"
-                      opacity="0.6"
-                      strokeDasharray="5,5"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      exit={{ pathLength: 0 }}
-                      transition={{ duration: 0.6, delay: reactionIndex * 0.1 }}
-                    />
+                    <g key={`product-line-group-${reactionIndex}`}>
+                      {/* Glow effect for product lines */}
+                      <motion.line
+                        x1={400 + groupPos.x}
+                        y1={400 + groupPos.y}
+                        x2={400 + productPos.x}
+                        y2={400 + productPos.y}
+                        stroke={reactionGroups[groupIndex].color}
+                        strokeWidth="6"
+                        opacity="0.2"
+                        filter="blur(3px)"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{ pathLength: 1, opacity: 0.2 }}
+                        exit={{ pathLength: 0, opacity: 0 }}
+                        transition={{ duration: 0.8, delay: reactionIndex * 0.1 }}
+                      />
+                      
+                      {/* Main product line */}
+                      <motion.line
+                        x1={400 + groupPos.x}
+                        y1={400 + groupPos.y}
+                        x2={400 + productPos.x}
+                        y2={400 + productPos.y}
+                        stroke={reactionGroups[groupIndex].color}
+                        strokeWidth="2"
+                        opacity="0.8"
+                        strokeDasharray="8,4"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        exit={{ pathLength: 0 }}
+                        transition={{ 
+                          duration: 0.8, 
+                          delay: reactionIndex * 0.1,
+                          ease: "easeOut"
+                        }}
+                      />
+                      
+                      {/* Animated particles along the line */}
+                      <motion.circle
+                        cx={400 + groupPos.x}
+                        cy={400 + groupPos.y}
+                        r="2"
+                        fill={reactionGroups[groupIndex].color}
+                        opacity="0.8"
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ 
+                          scale: [0, 1, 0.8, 1],
+                          opacity: [0, 1, 0.8, 1]
+                        }}
+                        exit={{ scale: 0, opacity: 0 }}
+                        transition={{ 
+                          duration: 1.2, 
+                          delay: reactionIndex * 0.1,
+                          repeat: Infinity,
+                          repeatDelay: 2
+                        }}
+                      />
+                    </g>
                   );
                 })}
             </svg>

@@ -5,13 +5,13 @@ const PartnersSection: React.FC = () => {
   const partners = [
     {
       name: "UC San Diego Skaggs School of Pharmacy and Pharmaceutical Sciences",
-      logo: `${process.env.PUBLIC_URL}/img/skaggs.png`,
+      logo: process.env.PUBLIC_URL + "/img/skaggs.png",
       description: "Leading institution in pharmaceutical research and education",
       website: "https://pharmacy.ucsd.edu/"
     },
     {
       name: "The Dorrestein Laboratory",
-      logo: `${process.env.PUBLIC_URL}/img/lab.png`, 
+      logo: process.env.PUBLIC_URL + "/img/lab.png", 
       description: "Pioneering metabolomics and mass spectrometry research",
       website: "https://dorresteinlab.ucsd.edu/"
     }
