@@ -30,16 +30,21 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, scrollProgress, onThemeToggle }
           {/* Logo Section */}
           <div className="navbar-logo-section">
             <a href="#home" className="navbar-logo-link">
-              {/* Placeholder for your icon - will be replaced when you upload */}
               <div className="navbar-logo-icon">
-                <span className="navbar-logo-text">LOGO</span>
+                <img 
+                  src="/img/logo.png" 
+                  alt="UCSD Logo" 
+                  className="navbar-logo-image"
+                />
               </div>
-              <span className="navbar-brand">
-                The Dorrestein Laboratory
-              </span>
-              <span className="navbar-brand-accent">
-                UCSD
-              </span>
+              <div className="navbar-brand-text">
+                <span className="navbar-brand">
+                  The Dorrestein Laboratory
+                </span>
+                <span className="navbar-brand-accent">
+                  UCSD
+                </span>
+              </div>
             </a>
           </div>
 

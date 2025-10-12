@@ -9,7 +9,7 @@ const TeamSection: React.FC<TeamSectionProps> = () => {
   const teamMembers = [
     {
       name: "Abubaker Patan, Ph.D.",
-      role: "Research Presenter",
+      role: "Postdoc",
       icon: "👤"
     },
     {
@@ -24,17 +24,17 @@ const TeamSection: React.FC<TeamSectionProps> = () => {
     },
     {
       name: "Shipei Xing",
-      role: "Research Scientist",
+      role: "Postdoc",
       icon: "👤"
     },
     {
       name: "Vincent Lamoureux",
-      role: "Research Scientist",
+      role: "Postdoc",
       icon: "👤"
     },
     {
       name: "Helena Mannochio Russo",
-      role: "Research Scientist",
+      role: "Postdoc",
       icon: "👤"
     },
     {
