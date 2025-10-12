@@ -14,6 +14,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, scrollProgress, onThemeToggle }
   const menuItems = [
     { name: 'Home', href: '#home' },
     { name: 'Research', href: '#research' },
+    { name: 'Workflow', href: '#workflow' },
     { name: 'Publications', href: '#publications' },
     { name: 'Team', href: '#team' },
     { name: 'News', href: '#news' },

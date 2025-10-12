@@ -16,7 +16,7 @@ const TransitionSection: React.FC<TransitionSectionProps> = () => {
   }, []);
 
   return (
-    <section className="paradigm-section">
+    <section id="research" className="paradigm-section">
       {/* Clean scientific background */}
       <div className="paradigm-background">
         <div className="scientific-grid" />
