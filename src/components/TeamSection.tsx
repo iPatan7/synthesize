@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface TeamSectionProps {
@@ -8,11 +8,6 @@ interface TeamSectionProps {
 const TeamSection: React.FC<TeamSectionProps> = () => {
   const teamMembers = [
     {
-      name: "Abubaker Patan, Ph.D.",
-      role: "Postdoc",
-      icon: "👤"
-    },
-    {
       name: "Prof. Pieter C. Dorrestein",
       role: "Principal Investigator",
       icon: "👤"
@@ -20,6 +15,11 @@ const TeamSection: React.FC<TeamSectionProps> = () => {
     {
       name: "Prof. Siegel Dionicio",
       role: "Co-Investigator",
+      icon: "👤"
+    },
+    {
+      name: "Abubaker Patan, PhD",
+      role: "Postdoc",
       icon: "👤"
     },
     {
@@ -33,7 +33,7 @@ const TeamSection: React.FC<TeamSectionProps> = () => {
       icon: "👤"
     },
     {
-      name: "Helena Mannochio Russo",
+      name: "Julius Agongo",
       role: "Postdoc",
       icon: "👤"
     },
@@ -44,7 +44,26 @@ const TeamSection: React.FC<TeamSectionProps> = () => {
     }
   ];
 
-  const platforms = ["GNPS", "ReDU", "MassIVE", "MASST", "GNPS", "ReDU"];
+  const platforms = [
+    "GNPS",
+    "ReDU",
+    "MassIVE",
+    "MASST",
+    "GNPS",
+    "StructureMASST"
+  ];
+
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsLightboxOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   return (
     <section id="team" className="team-section">
@@ -105,6 +124,62 @@ const TeamSection: React.FC<TeamSectionProps> = () => {
             ))}
           </div>
         </motion.div>
+
+        {/* Group Photo */}
+        <motion.div
+          className="team-group-photo"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <motion.img
+            src="/img/team.jpeg"
+            alt="Research team group photo"
+            style={{ width: '100%', borderRadius: '12px', marginTop: '24px', cursor: 'zoom-in' }}
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setIsLightboxOpen(true)}
+          />
+        </motion.div>
+
+        {isLightboxOpen && (
+          <motion.div
+            className="lightbox-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setIsLightboxOpen(false)}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              background: 'rgba(0,0,0,0.85)',
+              zIndex: 1000,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '24px'
+            }}
+          >
+            <motion.img
+              src="/img/team.jpeg"
+              alt="Research team group photo large"
+              initial={{ scale: 0.9, opacity: 0.8 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                maxWidth: '95%',
+                maxHeight: '90vh',
+                borderRadius: '12px',
+                boxShadow: '0 10px 40px rgba(0,0,0,0.6)',
+                cursor: 'zoom-out'
+              }}
+            />
+          </motion.div>
+        )}
 
         {/* Platform Logos */}
         <div className="platform-logos">

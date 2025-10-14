@@ -50,6 +50,12 @@ const WorkflowLinks = () => {
           type: "workflow"
         },
         {
+          name: "StructureMASST",
+          description: "Search similar fragmentation patterns by structure",
+          url: "https://structure-masst.gnps2.org/",
+          type: "tool"
+        },
+        {
           name: "MassIVE Login",
           description: "Mass spectrometry data repository",
           url: "https://massive.ucsd.edu/ProteoSAFe/user/login.jsp",
@@ -77,6 +83,30 @@ const WorkflowLinks = () => {
           name: "Auto Smile",
           description: "Automated SMILES structure generation",
           url: "https://autosmiles.streamlit.app/",
+          type: "tool"
+        },
+        {
+          name: "Multi-step MassQL",
+          description: "Chained query app for bile acid isomer annotation",
+          url: "https://multistep-massql.gnps2.org/#multi-step-mass-ql-bile-acid-isomer-annotation-app",
+          type: "tool"
+        },
+        {
+          name: "Post-Molecular Networking MassQL",
+          description: "Query networks after molecular networking",
+          url: "https://massqlpostmn.gnps2.org/",
+          type: "tool"
+        },
+        {
+          name: "Drug Readout Analysis",
+          description: "Drug readout analysis portal",
+          url: "https://drugreadouts.gnps2.org/",
+          type: "tool"
+        },
+        {
+          name: "Food Readout",
+          description: "Food readout analysis portal",
+          url: "https://foodreadouts.gnps2.org/",
           type: "tool"
         }
       ]
