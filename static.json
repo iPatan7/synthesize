@@ -1,0 +1,10 @@
+{
+  "redirects": [],
+  "headers": [],
+  "rewrites": [
+    { "source": "/dr-patan", "destination": "/index.html" },
+    { "source": "/dr-patan/*", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+
