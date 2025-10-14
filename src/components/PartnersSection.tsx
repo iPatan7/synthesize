@@ -16,6 +16,13 @@ const PartnersSection: React.FC = () => {
       logo: labImage, 
       description: "Pioneering metabolomics and mass spectrometry research",
       website: "https://dorresteinlab.ucsd.edu/"
+    },
+    {
+      name: "Siegel Lab Group",
+      // Image served from public directory
+      logo: "/img/sielab.png",
+      description: "Engineering biology and chemistry to build new functions",
+      website: "https://www.siegellabgroup.org/"
     }
   ];
 
