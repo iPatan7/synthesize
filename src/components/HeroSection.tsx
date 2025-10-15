@@ -38,7 +38,7 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
             >
               <div className="hero-partners">
                 <div className="lab-badge">The Dorrestein Laboratory</div>
-                <div className="lab-separator">/</div>
+                <div className="lab-separator"></div>
                 <div className="lab-badge">Siegel Lab Group</div>
               </div>
               <div className="lab-location">Joint research partners</div>

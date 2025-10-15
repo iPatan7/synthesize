@@ -52,7 +52,7 @@ const TransitionSection: React.FC<TransitionSectionProps> = () => {
             transition={{ duration: 1, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            How do you navigate a universe of unknown signals? You don't just explore—you build the map yourself.
+            How do you navigate a universe of unknown signals? You don't just explore you build the map yourself.
           </motion.p>
         </motion.div>
 

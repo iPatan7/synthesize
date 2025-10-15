@@ -54,13 +54,15 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
   };
 
   const getReactionPosition = (groupIndex: number, reactionIndex: number, totalReactions: number) => {
+    // Place product molecules along the same radial line as their group for direct mapping
     const groupPos = getGroupPosition(groupIndex);
-    const spread = 60; // Increased spread for better visibility
-    const offset = (reactionIndex - (totalReactions - 1) / 2) * (spread / totalReactions);
-    
+    const angleRadians = (groupPos.angle) * Math.PI / 180;
+    const baseRadiusFromCenter = 180; // distance from center to first product
+    const step = 28; // radial spacing between products
+    const radius = baseRadiusFromCenter + reactionIndex * step;
     return {
-      x: groupPos.x + Math.cos((groupPos.angle + offset) * Math.PI / 180) * 120, // Increased distance from groups
-      y: groupPos.y + Math.sin((groupPos.angle + offset) * Math.PI / 180) * 120
+      x: Math.cos(angleRadians) * radius,
+      y: Math.sin(angleRadians) * radius
     };
   };
 
@@ -134,7 +136,7 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
         })}
 
         {/* Connection Lines */}
-        <svg className="connection-lines" viewBox="0 0 800 800">
+        <svg className="connection-lines" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" shapeRendering="geometricPrecision">
           {reactionGroups.map((group: ReactionGroup, groupIndex: number) => {
             const position = getGroupPosition(groupIndex);
             const isSelected = selectedGroup === group.name;
@@ -165,22 +167,23 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                   />
                 )}
                 
-                {/* Main connection line */}
+                {/* Main connection line - solid, precise */}
                 <motion.line
                   x1="400"
                   y1="400"
                   x2={400 + position.x}
                   y2={400 + position.y}
                   stroke={group.color}
-                  strokeWidth={isSelected ? 4 : 2}
-                  opacity={isSelected ? 1 : 0.4}
-                  strokeDasharray={isSelected ? "0" : "5,5"}
+                  strokeWidth={isSelected ? 4 : 2.5}
+                  opacity={isSelected ? 1 : 0.5}
                   strokeLinecap="round"
+                  strokeLinejoin="round"
+                  vectorEffect="non-scaling-stroke"
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ 
                     pathLength: 1, 
-                    opacity: isSelected ? 1 : 0.4,
-                    strokeWidth: isSelected ? 4 : 2
+                    opacity: isSelected ? 1 : 0.5,
+                    strokeWidth: isSelected ? 4 : 2.5
                   }}
                   transition={{ 
                     duration: 1.5, 
@@ -190,6 +193,9 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                     damping: 20
                   }}
                 />
+
+                <circle cx="400" cy="400" r={isSelected ? 3 : 2} fill={group.color} opacity={isSelected ? 1 : 0.8} />
+                <circle cx={400 + position.x} cy={400 + position.y} r={isSelected ? 3 : 2} fill={group.color} opacity={isSelected ? 1 : 0.8} />
                 
                 {/* Animated dots along the line */}
                 <motion.circle
@@ -279,7 +285,7 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
         {/* Product Connection Lines */}
         <AnimatePresence>
           {selectedGroup && (
-            <svg className="product-lines" viewBox="0 0 800 800">
+            <svg className="product-lines" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" shapeRendering="geometricPrecision">
               {reactionGroups
                 .find(group => group.name === selectedGroup)
                 ?.reactions.map((reaction: Reaction, reactionIndex: number) => {
@@ -306,17 +312,18 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                         transition={{ duration: 0.8, delay: reactionIndex * 0.1 }}
                       />
                       
-                      {/* Main product line */}
+                      {/* Main product line - solid, precise */}
                       <motion.line
                         x1={400 + groupPos.x}
                         y1={400 + groupPos.y}
                         x2={400 + productPos.x}
                         y2={400 + productPos.y}
                         stroke={reactionGroups[groupIndex].color}
-                        strokeWidth="2"
-                        opacity="0.8"
-                        strokeDasharray="8,4"
+                        strokeWidth="2.5"
+                        opacity="0.9"
                         strokeLinecap="round"
+                        strokeLinejoin="round"
+                        vectorEffect="non-scaling-stroke"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: 1 }}
                         exit={{ pathLength: 0 }}
@@ -326,6 +333,9 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                           ease: "easeOut"
                         }}
                       />
+
+                      <circle cx={400 + groupPos.x} cy={400 + groupPos.y} r="2" fill={reactionGroups[groupIndex].color} opacity="0.9" />
+                      <circle cx={400 + productPos.x} cy={400 + productPos.y} r="2" fill={reactionGroups[groupIndex].color} opacity="0.9" />
                       
                       {/* Animated particles along the line */}
                       <motion.circle
