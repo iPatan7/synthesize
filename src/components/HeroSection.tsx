@@ -7,7 +7,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = () => {
   return (
-    <section className="hero-section">
+    <section id="home" className="hero-section">
       {/* Full Background Video */}
       <video 
         src={`${process.env.PUBLIC_URL}/videos/metabolome-intro.mp4`} 

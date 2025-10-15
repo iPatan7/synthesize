@@ -572,7 +572,7 @@ body.light-theme .navbar-logo-fallback {
   justify-content: flex-start; /* Changed back to flex-start for left alignment */
   overflow: hidden;
   color: white;
-  padding-top: 64px;
+  padding-top: 96px;
   box-sizing: border-box;
   padding-left: 60px; /* Restored to 60px for left positioning */
   padding-right: 60px;
