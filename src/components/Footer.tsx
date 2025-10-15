@@ -59,9 +59,12 @@ const Footer: React.FC<FooterProps> = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <h4>Contact</h4>
+          <h4 id="contact">Contact</h4>
           <p>University of California, San Diego</p>
           <p>La Jolla, CA 92093</p>
+          <p>
+            <a href="mailto:apatan@health.ucsd.edu">apatan@health.ucsd.edu</a>
+          </p>
         </motion.div>
       </div>
       

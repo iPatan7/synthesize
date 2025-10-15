@@ -29,15 +29,19 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            {/* Lab Info Badge */}
+            {/* Partners Badge */}
             <motion.div 
               className="hero-lab-info"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              <div className="lab-badge">The Dorrestein Laboratory</div>
-              <div className="lab-location">UC San Diego</div>
+              <div className="hero-partners">
+                <div className="lab-badge">The Dorrestein Laboratory</div>
+                <div className="lab-separator">/</div>
+                <div className="lab-badge">Siegel Lab Group</div>
+              </div>
+              <div className="lab-location">Joint research partners</div>
             </motion.div>
 
             {/* Main Title */}
