@@ -42,23 +42,24 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
   const { centralMolecule, reactionGroups } = reactionsData;
   const totalGroups = reactionGroups.length;
   const angleStep = 360 / totalGroups;
+  const angleOffset = -90; // start at top, rotate clockwise
 
   const getGroupPosition = (index: number) => {
-    const angle = (index * angleStep) * (Math.PI / 180);
-    const radius = 320; // Position groups at the edge of the 800px wheel (400px radius - 80px group size)
+    const angleDeg = index * angleStep + angleOffset;
+    const angle = angleDeg * (Math.PI / 180);
+    const radius = 270;
     return {
       x: Math.cos(angle) * radius,
       y: Math.sin(angle) * radius,
-      angle: index * angleStep
+      angleDeg
     };
   };
 
   const getReactionPosition = (groupIndex: number, reactionIndex: number, totalReactions: number) => {
-    // Place product molecules along the same radial line as their group for direct mapping
-    const groupPos = getGroupPosition(groupIndex);
-    const angleRadians = (groupPos.angle) * Math.PI / 180;
-    const baseRadiusFromCenter = 180; // distance from center to first product
-    const step = 28; // radial spacing between products
+    const { angleDeg } = getGroupPosition(groupIndex);
+    const angleRadians = angleDeg * Math.PI / 180;
+    const baseRadiusFromCenter = 180;
+    const step = 28;
     const radius = baseRadiusFromCenter + reactionIndex * step;
     return {
       x: Math.cos(angleRadians) * radius,

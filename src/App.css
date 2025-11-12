@@ -786,7 +786,6 @@ body.light-theme .navbar-logo-fallback {
   flex-wrap: wrap;
   justify-content: flex-start; /* Left align the stats for desktop */
 }
-
 .hero-stat {
   text-align: center;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
@@ -1577,7 +1576,6 @@ body.light-theme .stat-card {
   border: 1px solid rgba(59, 130, 246, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
-
 .stat-card::before {
   content: '';
   position: absolute;
@@ -1589,7 +1587,6 @@ body.light-theme .stat-card {
   opacity: 0;
   transition: opacity 0.4s ease;
 }
-
 .stat-card:hover::before {
   opacity: 1;
 }
@@ -2295,10 +2292,6 @@ body.light-theme .data-table {
   padding: 0;
 }
 
-body.light-theme .table-wrapper {
-  /* No additional styling needed */
-}
-
 /* Enhanced Table Styling */
 .molecule-info {
   display: flex;
@@ -2371,7 +2364,6 @@ body.light-theme .temp-value {
 body.light-theme .solubility-text {
   color: #0f172a;
 }
-
 .reaction-badge {
   background: rgba(0, 212, 255, 0.2);
   color: #00d4ff;
@@ -2390,7 +2382,6 @@ body.light-theme .reaction-badge {
   background: rgba(59, 130, 246, 0.2);
   color: #3b82f6;
 }
-
 .data-table th {
   background: rgba(0, 212, 255, 0.2);
   color: #ffffff;
@@ -3025,59 +3016,59 @@ body.light-theme .research-note strong {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 4rem 0;
+  margin: 3.5rem 0 4.5rem;
   overflow: visible;
 }
 
 .reaction-wheel {
   position: relative;
-  width: 800px;
-  height: 800px;
+  width: 720px;
+  height: 720px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, rgba(0, 212, 255, 0.02) 50%, transparent 80%);
-  border: 3px solid rgba(0, 212, 255, 0.3);
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.14) 0%, rgba(0, 212, 255, 0.04) 55%, transparent 82%);
+  border: 2px solid rgba(0, 212, 255, 0.25);
   margin: 0 auto;
-  box-shadow: 
-    0 0 50px rgba(0, 212, 255, 0.2),
-    inset 0 0 50px rgba(0, 212, 255, 0.1);
+  box-shadow:
+    0 0 45px rgba(0, 212, 255, 0.22),
+    inset 0 0 60px rgba(0, 212, 255, 0.12);
   will-change: transform, opacity;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.light-theme .reaction-wheel {
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.02) 50%, transparent 80%);
-  border: 3px solid rgba(59, 130, 246, 0.3);
-  box-shadow: 
-    0 0 50px rgba(59, 130, 246, 0.2),
-    inset 0 0 50px rgba(59, 130, 246, 0.1);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.03) 55%, transparent 82%);
+  border: 2px solid rgba(59, 130, 246, 0.25);
+  box-shadow:
+    0 0 45px rgba(59, 130, 246, 0.18),
+    inset 0 0 60px rgba(59, 130, 246, 0.12);
 }
 
 /* Central Molecule */
 .central-molecule {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: fixed; /* instead of absolute */
+  top: 36%;
+  left: 36%;
   transform: translate(-50%, -50%);
-  width: 220px;
-  height: 220px;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%);
-  border: 4px solid rgba(0, 212, 255, 0.7);
-  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  border-radius: 24px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.28);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(15px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255,255,255,0.08) inset;
-  cursor: pointer;
-  z-index: 10;
   padding: 1.5rem;
+  backdrop-filter: blur(18px);
+  
+  /* Force it on top */
+  z-index: 999999;
 }
 
 body.light-theme .central-molecule {
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.35) 60%, rgba(255,255,255,0.1) 100%);
-  border: 4px solid rgba(59, 130, 246, 0.7);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.03) inset;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.35) 65%, rgba(255, 255, 255, 0.1) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.03) inset;
 }
 
 .molecule-structure {
@@ -3124,55 +3115,47 @@ body.light-theme .molecule-description {
 /* Reaction Groups */
 .reaction-group {
   position: absolute;
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
   border: 2px solid var(--group-color);
-  border-radius: 50%;
+  border-radius: 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  backdrop-filter: blur(15px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(16px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 5;
-  box-shadow: 
-    0 0 15px var(--group-color),
-    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 16px var(--group-color),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 body.light-theme .reaction-group {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
-  box-shadow: 
+  box-shadow:
     0 0 20px var(--group-color),
     0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.reaction-group:hover {
-  transform: scale(1.3);
-  box-shadow: 
-    0 0 30px var(--group-color),
-    0 0 40px var(--group-color),
-    inset 0 2px 4px rgba(255, 255, 255, 0.2);
+.reaction-group:hover,
+.reaction-group.hovered {
+  transform: scale(1.18) translateY(-6px);
+  box-shadow:
+    0 0 24px var(--group-color),
+    0 0 36px rgba(0, 212, 255, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 
 .reaction-group.selected {
-  transform: scale(1.4);
-  box-shadow: 
-    0 0 40px var(--group-color),
-    0 0 60px var(--group-color),
-    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  transform: scale(1.22) translateY(-8px);
+  box-shadow:
+    0 0 30px var(--group-color),
+    0 0 44px rgba(0, 212, 255, 0.24),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16);
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
-}
-
-.reaction-group.hovered {
-  transform: scale(1.35);
-  box-shadow: 
-    0 0 35px var(--group-color),
-    0 0 50px var(--group-color),
-    inset 0 2px 4px rgba(255, 255, 255, 0.2);
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.65) 100%);
 }
 
 body.light-theme .reaction-group.selected {
@@ -3180,18 +3163,26 @@ body.light-theme .reaction-group.selected {
 }
 
 .group-label {
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  color: #ffffff;
-  text-align: center;
-  line-height: 1.1;
-  text-shadow: 
-    0 0 15px var(--group-color),
-    0 2px 4px rgba(0, 0, 0, 0.8);
-  letter-spacing: 0.3px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+  color: #ffffff;
 }
 
+body.light-theme .group-label {
+  color: #0f172a;
+}
+
+.connection-lines,
+.product-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 body.light-theme .group-label {
   color: #0f172a;
   text-shadow: 
@@ -3958,7 +3949,6 @@ body.light-theme .transition-description {
   color: var(--accent-primary);
   font-weight: 600;
 }
-
 /* Library Stats - Compact & Modern */
 .library-stats {
   display: grid;
@@ -3988,7 +3978,6 @@ body.light-theme .transition-description {
   justify-content: center;
   align-items: center;
 }
-
 .library-stats .stat-card::before {
   content: '';
   position: absolute;
@@ -4609,26 +4598,71 @@ body.light-theme .big-number .label {
 /* Case Study Sections */
 .case-study-section {
   min-height: 100vh;
-  background: linear-gradient(180deg, #16213e 0%, #1a1a2e 100%);
   padding: 4rem 2rem;
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
-body.light-theme .case-study-section {
-  background: linear-gradient(180deg, #f7f5f2 0%, #fdfcf9 100%);
+.case-study-section.headline {
+  background: linear-gradient(180deg, #16213e 0%, #1a1a2e 100%);
+}
+
+.case-study-section:not(.headline) {
+  background: none;
+  position: relative;
 }
 
 .case-study-section.pregnancy {
-  background: linear-gradient(180deg, #1a1a2e 0%, #0f3460 100%);
+  padding: 6rem 0 6.5rem;
+  margin-top: 0;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.2), transparent 65%),
+              radial-gradient(circle at top right, rgba(16, 185, 129, 0.18), transparent 60%),
+              linear-gradient(185deg, rgba(2, 6, 23, 0.92) 0%, rgba(15, 23, 42, 0.96) 40%, rgba(15, 23, 42, 0.98) 100%);
+  overflow: hidden;
+}
+
+.case-study-section.pregnancy::before,
+.case-study-section.pregnancy::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.case-study-section.pregnancy::before {
+  background: radial-gradient(circle at center, rgba(14, 165, 233, 0.12), transparent 70%);
+  opacity: 0.8;
+}
+
+.case-study-section.pregnancy::after {
+  background: linear-gradient(180deg, transparent 0%, rgba(2, 6, 23, 0.85) 100%);
+  opacity: 0.6;
+}
+
+body.light-theme .case-study-section.headline {
+  background: linear-gradient(180deg, #f7f5f2 0%, #fdfcf9 100%);
+}
+
+body.light-theme .case-study-section:not(.headline) {
+  background: none;
 }
 
 body.light-theme .case-study-section.pregnancy {
-  background: linear-gradient(180deg, #f1f5f9 0%, #cbd5e1 100%);
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 65%),
+              radial-gradient(circle at top right, rgba(34, 197, 94, 0.16), transparent 60%),
+              linear-gradient(185deg, rgba(240, 249, 255, 0.98) 0%, rgba(226, 241, 255, 0.98) 100%);
+}
+
+body.light-theme .case-study-section.pregnancy::after {
+  background: linear-gradient(180deg, transparent 0%, rgba(241, 245, 249, 0.82) 100%);
 }
 
 .case-study-content {
   max-width: 1400px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .case-study-title {
@@ -4652,14 +4686,27 @@ body.light-theme .case-study-title {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  color: rgba(226, 232, 240, 0.85);
+}
+
+body.light-theme .case-study-description {
+  color: rgba(71, 85, 105, 0.95);
 }
 
 .case-study-description p {
   font-size: 1.2rem;
-  color: var(--text-secondary);
+  color: inherit;
   line-height: 1.6;
   margin-bottom: 1rem;
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.case-study-description strong {
+  color: #38bdf8;
+}
+
+body.light-theme .case-study-description strong {
+  color: #2563eb;
 }
 
 .case-study-description strong {
@@ -4697,7 +4744,6 @@ body.light-theme .molecule-node {
   background: var(--card-bg);
   border: 2px solid var(--card-border);
 }
-
 .molecule-node:hover {
   background: rgba(0, 212, 255, 0.2);
   border-color: var(--accent-primary);
@@ -4728,12 +4774,10 @@ body.light-theme .molecule-node:hover {
   letter-spacing: 1px;
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 /* Spectra Comparison */
 .spectra-comparison {
   margin: 3rem 0;
 }
-
 .spectra-container {
   display: flex;
   align-items: center;
@@ -4852,10 +4896,7 @@ body.light-theme .molecule-formula {
 }
 
 .carnitine-functions {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: block;
 }
 
 .function-icon {
@@ -5494,7 +5535,6 @@ body.light-theme .stat-number {
 .chart-header {
   margin-bottom: 2rem;
 }
-
 .chart-header h3 {
   font-size: 1.5rem;
   color: #ffffff;
@@ -5532,14 +5572,12 @@ body.light-theme .chart-header h3 {
 body.light-theme .stat-label {
   color: #64748b;
 }
-
 .stat-value {
   font-size: 1.2rem;
   color: #00d4ff;
   font-weight: 600;
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 body.light-theme .stat-value {
   color: #3b82f6;
 }
@@ -6291,7 +6329,6 @@ body.light-theme .app-footer::before {
     box-sizing: border-box;
   }
 }
-
 /* Enhanced Mobile Stability & Professional Polish - Full Width */
 @media (max-width: 768px) {
   /* Prevent horizontal scrolling and ensure full width */
@@ -6905,29 +6942,34 @@ body.light-theme .no-results {
 /* ===== ENHANCED CASE STUDY STYLING ===== */
 /* Molecular Reveal Animation */
 .molecular-reveal {
-  margin: 3rem 0;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  margin: 3.5rem auto 4.75rem;
+  padding: 2.6rem;
+  background: rgba(2, 6, 23, 0.75);
+  border-radius: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  box-shadow: 0 32px 80px rgba(15, 23, 42, 0.35);
+  max-width: 1020px;
   position: relative;
-  overflow: hidden;
+  z-index: 1;
 }
 
 body.light-theme .molecular-reveal {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(248, 250, 252, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 28px 70px rgba(148, 163, 184, 0.25);
 }
 
 .molecules-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
   flex-wrap: wrap;
-  padding: 0 300px;
+  gap: 1.6rem;
+  justify-content: center;
+  margin: 0 auto 2.75rem;
+  max-width: 900px;
+}
+
+.molecule,
+.conjugation-arrow {
   position: relative;
 }
 
@@ -6935,25 +6977,28 @@ body.light-theme .molecular-reveal {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  min-width: 200px;
-  transition: all 0.3s ease;
+  padding: 0.9rem;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  min-width: 180px;
+  max-width: 210px;
+  width: 100%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: visible;
 }
 
 body.light-theme .molecule {
-  background: rgba(255, 255, 255, 0.6);
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: rgba(241, 245, 249, 0.88);
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .molecule.ibuprofen {
-  border-color: rgba(0, 212, 255, 0.5);
+  border-color: rgba(59, 130, 246, 0.28);
 }
 
 .molecule.carnitine {
-  border-color: rgba(0, 255, 136, 0.5);
+  border-color: rgba(16, 185, 129, 0.28);
 }
 
 .molecule {
@@ -6962,64 +7007,60 @@ body.light-theme .molecule {
 }
 
 .molecule:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.22);
 }
 
 body.light-theme .molecule:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 18px rgba(148, 163, 184, 0.25);
 }
 
 .molecule-hover-info {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.95);
+  position: static;
+  background: rgba(10, 18, 33, 0.92);
   color: white;
-  padding: 1rem;
+  padding: 0.7rem 0.85rem;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(10px);
-  width: 200px;
+  width: 100%;
+  max-width: 220px;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: none;
+  font-size: 0.74rem;
+  pointer-events: none;
   opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 1000;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  font-size: 0.85rem;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, max-height 0.3s ease, transform 0.25s ease, margin 0.25s ease;
 }
 
 body.light-theme .molecule-hover-info {
-  background: rgba(255, 255, 255, 0.95);
-  color: #1e293b;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.molecule.ibuprofen .molecule-hover-info {
-  right: -250px;
-  left: auto;
-}
-
-.molecule.carnitine .molecule-hover-info {
-  left: -250px;
-  right: auto;
+  background: rgba(248, 250, 252, 0.97);
+  color: #0f172a;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  box-shadow: none;
 }
 
 .molecule:hover .molecule-hover-info {
   opacity: 1;
-  visibility: visible;
-  transform: translateY(-50%);
+  max-height: 260px;
+  pointer-events: auto;
+  margin-top: 0.65rem;
+  transform: translateY(0);
 }
 
 .hover-title {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: #00d4ff;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
 }
 
 body.light-theme .hover-title {
@@ -7027,12 +7068,12 @@ body.light-theme .hover-title {
 }
 
 .hover-details {
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 0.72rem;
+  line-height: 1.45;
 }
 
 .hover-details p {
-  margin: 0.5rem 0;
+  margin: 0.35rem 0;
   color: #e2e8f0;
   font-weight: 400;
 }
@@ -7042,20 +7083,8 @@ body.light-theme .hover-details p {
 }
 
 .discovery-hover {
-  width: 250px;
-  right: -270px;
-  left: auto;
-}
-
-.conjugate-result .molecule-hover-info {
-  right: -270px;
-  left: auto;
-}
-
-.conjugate-result:hover .molecule-hover-info {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-50%);
+  width: 100%;
+  max-width: 240px;
 }
 
 .discovery-hover .hover-title {
@@ -7066,53 +7095,27 @@ body.light-theme .discovery-hover .hover-title {
   color: #f59e0b;
 }
 
+.discovery-hover .hover-details {
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
 /* Special animation for conjugate discovery */
-.conjugate-icon {
-  position: relative;
-}
-
-.conjugate-icon::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120%;
-  height: 120%;
-  border: 3px solid #00d4ff;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  animation: discovery-pulse 2s ease-out 2.5s forwards;
-}
-
-body.light-theme .conjugate-icon::after {
-  border-color: #3b82f6;
-}
-
-@keyframes discovery-pulse {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.2);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.5);
-  }
-}
-
 .molecule-structure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
   text-align: center;
+  position: relative;
+  width: 100%;
 }
 
 .molecule-name {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
   color: #ffffff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 body.light-theme .molecule-name {
@@ -7120,26 +7123,25 @@ body.light-theme .molecule-name {
 }
 
 .molecule-formula {
-  font-size: 1rem;
-  color: #00d4ff;
+  font-size: 0.85rem;
+  color: #7dd3fc;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   font-family: 'Times New Roman', serif;
+  letter-spacing: 0.03em;
 }
-
 body.light-theme .molecule-formula {
-  color: #3b82f6;
+  color: #2563eb;
 }
 
 .molecule-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
-  animation: float-gentle 3s ease-in-out infinite;
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.28));
+  animation: float-gentle 4s ease-in-out infinite;
 }
-
 body.light-theme .molecule-icon {
-  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.08));
 }
 
 @keyframes float-gentle {
@@ -7148,10 +7150,10 @@ body.light-theme .molecule-icon {
 }
 
 .molecule-class {
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   color: #00ff88;
   font-weight: 500;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
   text-align: center;
   font-style: italic;
 }
@@ -7160,27 +7162,207 @@ body.light-theme .molecule-class {
   color: #22c55e;
 }
 
+.molecule-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.1);
+  color: #bfdbfe;
+  box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.26);
+}
+
+body.light-theme .molecule-label {
+  background: rgba(59, 130, 246, 0.12);
+  color: #2563eb;
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.25);
+}
+
+.molecule-label.conjugate {
+  background: rgba(245, 158, 11, 0.16);
+  color: #fcd34d;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.4);
+}
+
+body.light-theme .molecule-label.conjugate {
+  color: #d97706;
+}
+
+.molecule-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.28rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.molecule-chip {
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.16);
+  color: #5eead4;
+  border: 1px solid rgba(45, 212, 191, 0.32);
+}
+
+body.light-theme .molecule-chip {
+  background: rgba(20, 184, 166, 0.12);
+  color: #0f766e;
+  border: 1px solid rgba(13, 148, 136, 0.3);
+}
+
+.conjugate-badges .molecule-chip {
+  background: rgba(234, 179, 8, 0.16);
+  color: #fde68a;
+  border-color: rgba(251, 191, 36, 0.36);
+}
+
+body.light-theme .conjugate-badges .molecule-chip {
+  background: rgba(251, 191, 36, 0.12);
+  color: #b45309;
+  border-color: rgba(217, 119, 6, 0.34);
+}
+
 .conjugation-arrow {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
+  gap: 0.3rem;
+  padding: 1rem 0.9rem;
+  background: rgba(15, 23, 42, 0.45);
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  min-width: 180px;
+  max-width: 200px;
+  width: 100%;
 }
 
 .arrow-icon {
-  font-size: 2rem;
-  color: #ffa726;
+  font-size: 1.4rem;
+  color: #fbbf24;
   font-weight: bold;
-  animation: pulse 2s infinite;
 }
 
 .arrow-text {
-  font-size: 0.9rem;
-  color: #ffa726;
+  font-size: 0.68rem;
+  color: #fbbf24;
   font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 1px;
+}
+
+.arrow-pill {
+  margin-top: 0.3rem;
+  font-size: 0.58rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(234, 179, 8, 0.18);
+  color: #fde68a;
+  border: 1px solid rgba(234, 179, 8, 0.35);
+}
+
+body.light-theme .arrow-pill {
+  background: rgba(251, 191, 36, 0.12);
+  color: #b45309;
+  border-color: rgba(217, 119, 6, 0.22);
+}
+
+.arrow-text,
+.arrow-subtext {
+  text-align: center;
+}
+
+.conjugation-arrow {
+  text-align: center;
+}
+
+body.light-theme .conjugation-arrow {
+  background: rgba(241, 245, 249, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.26);
+}
+
+.arrow-subtext {
+  font-size: 0.62rem;
+  color: rgba(226, 232, 240, 0.85);
+  text-align: center;
+  line-height: 1.4;
+  margin-top: 0.3rem;
+  max-width: 14ch;
+}
+
+body.light-theme .arrow-subtext {
+  color: rgba(30, 41, 59, 0.8);
+}
+
+.formula-sequence {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.65rem;
+  margin-top: 0.5rem;
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.12);
+  color: #bae6fd;
+  position: relative;
+  overflow: hidden;
+}
+
+.formula-sequence::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(125, 211, 252, 0.32), transparent);
+  transform: translateX(-60%);
+  animation: formula-pass 8s linear infinite;
+}
+
+.formula-fragment {
+  font-weight: 600;
+}
+
+.formula-join {
+  color: #fef3c7;
+  font-size: 0.8rem;
+}
+
+.formula-result {
+  font-weight: 700;
+  color: #f97316;
+  letter-spacing: 0.1em;
+}
+
+body.light-theme .formula-sequence {
+  background: rgba(56, 189, 248, 0.14);
+  color: #0369a1;
+}
+
+body.light-theme .formula-join {
+  color: #b45309;
+}
+
+body.light-theme .formula-result {
+  color: #d97706;
+}
+
+@keyframes formula-pass {
+  0% {
+    transform: translateX(-60%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(60%);
+  }
 }
 
 @keyframes pulse {
@@ -7191,135 +7373,182 @@ body.light-theme .molecule-class {
 .conjugate-result {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
-  position: relative;
+  margin-top: 5.8rem;
+  margin-bottom: 16.5rem;
 }
 
 .molecule-structure.conjugate {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 255, 136, 0.2));
-  border: 2px solid rgba(0, 212, 255, 0.5);
-  padding: 2rem;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  padding: 1.2rem 1.3rem;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  text-align: center;
+  max-width: 540px;
+  width: 100%;
 }
 
 body.light-theme .molecule-structure.conjugate {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 197, 94, 0.2));
-  border: 2px solid rgba(59, 130, 246, 0.5);
+  background: rgba(241, 245, 249, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
-.molecule-structure.conjugate::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #00d4ff, #00ff88);
-  opacity: 0.8;
+.conjugate-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-body.light-theme .molecule-structure.conjugate::before {
-  background: linear-gradient(90deg, #3b82f6, #22c55e);
+.conjugate-titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.conjugate-name {
+  font-size: 0.95rem;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #e0f2fe;
+}
+
+body.light-theme .conjugate-name {
+  color: #1d4ed8;
+}
+
+.conjugate-formula {
+  font-family: 'Times New Roman', serif;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: rgba(190, 242, 100, 0.9);
+}
+
+body.light-theme .conjugate-formula {
+  color: rgba(22, 163, 74, 0.8);
+}
+
+.conjugate-class {
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.88);
+}
+
+body.light-theme .conjugate-class {
+  color: rgba(30, 64, 175, 0.8);
+}
+
+.conjugate-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
 }
 
 .conjugate-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
-  animation: pulse-glow 2s ease-in-out infinite;
+  font-size: 2.2rem;
+  margin-bottom: 0.35rem;
+  filter: drop-shadow(0 0 12px rgba(14, 165, 233, 0.45));
+  transition: transform 0.4s ease;
+}
+
+.conjugate-header:hover .conjugate-icon {
+  transform: scale(1.03);
 }
 
 body.light-theme .conjugate-icon {
-  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
-}
-
-@keyframes pulse-glow {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5)); }
-  50% { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.8)); }
-}
-
-body.light-theme .conjugate-icon {
-  animation: pulse-glow-light 2s ease-in-out infinite;
-}
-
-@keyframes pulse-glow-light {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5)); }
-  50% { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.8)); }
+  filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.4));
 }
 
 .research-impact {
-  font-size: 0.8rem;
-  color: #ffa726;
+  font-size: 0.72rem;
+  color: #facc15;
   font-weight: 600;
-  margin-top: 0.5rem;
+  margin-top: 0.1rem;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  background: rgba(255, 167, 38, 0.1);
-  padding: 0.3rem 0.8rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 167, 38, 0.3);
+  letter-spacing: 0.14em;
+  background: rgba(250, 204, 21, 0.12);
+  padding: 0.28rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(234, 179, 8, 0.4);
+  box-shadow: 0 12px 22px rgba(250, 204, 21, 0.2);
 }
 
 body.light-theme .research-impact {
-  color: #f59e0b;
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #b45309;
+  background: rgba(251, 191, 36, 0.14);
+  border: 1px solid rgba(217, 119, 6, 0.28);
+  box-shadow: 0 12px 22px rgba(251, 191, 36, 0.18);
 }
 
 .discovery-badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: linear-gradient(135deg, #ff6b6b, #ffa726);
-  color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.7rem;
-  font-weight: 600;
+  position: relative;
+  background: rgba(248, 113, 113, 0.9);
+  color: #fff7ed;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { box-shadow: 0 0 5px rgba(255, 107, 107, 0.5); }
-  to { box-shadow: 0 0 15px rgba(255, 107, 107, 0.8); }
+  letter-spacing: 0.14em;
+  border: 1px solid rgba(248, 113, 113, 0.5);
 }
 
 /* Function Cards */
 .carnitine-functions {
-  margin: 3rem 0;
+  margin: 6.5rem auto 5rem;
+  max-width: 960px;
+  scroll-margin-top: 160px;
+  padding: 2.1rem;
+  background: rgba(8, 15, 35, 0.6);
+  border-radius: 22px;
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.32);
+  position: relative;
+  z-index: 1;
+}
+
+body.light-theme .carnitine-functions {
+  background: rgba(248, 250, 252, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 28px 70px rgba(148, 163, 184, 0.24);
 }
 
 .functions-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #00d4ff;
+  font-size: 1.85rem;
+  font-weight: 650;
+  color: #38bdf8;
   text-align: center;
-  margin-bottom: 2rem;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  margin-bottom: 1.6rem;
+  text-shadow: 0 0 16px rgba(56, 189, 248, 0.28);
 }
 
 body.light-theme .functions-title {
-  color: #3b82f6;
-  text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  color: #2563eb;
+  text-shadow: 0 0 16px rgba(37, 99, 235, 0.28);
 }
 
 .function-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.2rem;
+  margin-top: 1.9rem;
 }
 
 .function-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 2rem;
+  background: rgba(17, 25, 48, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.16);
+  border-radius: 18px;
+  padding: 1.65rem;
   text-align: center;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
@@ -7328,8 +7557,8 @@ body.light-theme .functions-title {
 }
 
 body.light-theme .function-card {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .function-card::before {
@@ -7348,20 +7577,20 @@ body.light-theme .function-card::before {
 }
 
 .function-card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(0, 212, 255, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+  background: rgba(17, 25, 48, 0.6);
+  border-color: rgba(59, 130, 246, 0.28);
+  box-shadow: 0 20px 36px rgba(15, 23, 42, 0.22);
 }
 
 body.light-theme .function-card:hover {
   background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.24);
+  box-shadow: 0 20px 36px rgba(59, 130, 246, 0.14);
 }
 
 .card-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2.4rem;
+  margin-bottom: 0.75rem;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
 }
 
@@ -7370,10 +7599,10 @@ body.light-theme .card-icon {
 }
 
 .card-title {
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 650;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
@@ -7383,10 +7612,11 @@ body.light-theme .card-title {
 }
 
 .card-description {
-  font-size: 1rem;
-  color: #cccccc;
-  line-height: 1.6;
-  margin: 0;
+  font-size: 0.95rem;
+  color: #cbd5f5;
+  line-height: 1.55;
+  margin: 0 auto;
+  max-width: 26ch;
 }
 
 body.light-theme .card-description {
@@ -7395,96 +7625,127 @@ body.light-theme .card-description {
 
 /* Impact Statement */
 .impact-statement {
-  margin: 3rem 0;
-  padding: 2rem;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  margin: 6.5rem auto 5.5rem;
+  padding: 3rem;
+  background: rgba(2, 6, 23, 0.68);
+  border-radius: 28px;
+  border: 1px solid rgba(59, 130, 246, 0.26);
   text-align: center;
+  scroll-margin-top: 140px;
+  max-width: 1100px;
+  box-shadow: 0 40px 90px rgba(15, 23, 42, 0.45);
+  position: relative;
+  z-index: 1;
 }
 
 body.light-theme .impact-statement {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: rgba(248, 250, 252, 0.94);
+  border: 1px solid rgba(148, 163, 184, 0.26);
+  box-shadow: 0 40px 90px rgba(148, 163, 184, 0.3);
 }
 
 .impact-content h3 {
-  font-size: 1.8rem;
+  font-size: 2.1rem;
   font-weight: 700;
-  color: #00d4ff;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+  color: #38bdf8;
+  margin-bottom: 1.35rem;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
 }
 
 body.light-theme .impact-content h3 {
-  color: #3b82f6;
-  text-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  color: #2563eb;
+  text-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
 }
 
 .impact-content p {
-  font-size: 1.1rem;
-  color: #cccccc;
-  line-height: 1.7;
+  font-size: 1.18rem;
+  color: rgba(226, 232, 240, 0.9);
+  line-height: 1.85;
   margin: 0;
-  max-width: 800px;
+  max-width: 820px;
   margin-left: auto;
   margin-right: auto;
 }
 
 body.light-theme .impact-content p {
-  color: #64748b;
+  color: rgba(71, 85, 105, 0.92);
 }
 
 /* Mobile Responsiveness for Enhanced Case Study */
 @media (max-width: 768px) {
+  .case-study-section.pregnancy {
+    padding: 4.5rem 0 4.5rem;
+    margin-top: 3.5rem;
+  }
+
   .molecular-reveal {
-    padding: 1rem;
-    margin: 2rem 0;
+    padding: 1.6rem;
+    margin: 2.5rem 1.25rem;
   }
   
   .molecules-container {
     flex-direction: column;
-    gap: 1rem;
-    padding: 0 20px;
+    gap: 1.6rem;
+    max-width: 100%;
   }
   
-  .molecule {
+  .molecule,
+  .conjugation-arrow {
     min-width: auto;
-    width: 100%;
-    max-width: 300px;
+    max-width: 100%;
   }
   
   .conjugation-arrow {
-    transform: rotate(90deg);
+    padding: 1.35rem 1.1rem;
+  }
+  
+  .formula-sequence {
+    font-size: 0.72rem;
+  }
+  
+  .conjugate-result {
+    margin-top: 3.8rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .carnitine-functions,
+  .impact-statement {
+    margin: 3.5rem 1.25rem;
+    padding: 2rem;
   }
   
   .function-cards {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.75rem;
   }
   
   .function-card {
-    padding: 1.5rem;
-  }
-  
-  .impact-statement {
-    padding: 1.5rem;
+    padding: 1.6rem;
   }
   
   .impact-content h3 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
   
   .impact-content p {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 }
 
 @media (max-width: 480px) {
+  .molecular-reveal {
+    margin: 2.2rem 1rem;
+    padding: 1.4rem;
+  }
+  
   .molecule {
     padding: 1rem;
   }
   
+  .molecule-label {
+    font-size: 0.68rem;
+  }
+
   .molecule-name {
     font-size: 1rem;
   }
@@ -7500,33 +7761,44 @@ body.light-theme .impact-content p {
   .molecule-icon {
     font-size: 2.5rem;
   }
+
+  .molecule-badges {
+    gap: 0.4rem;
+  }
+
+  .molecule-chip {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.7rem;
+  }
   
+  .formula-sequence {
+    font-size: 0.68rem;
+    padding: 0.35rem 0.7rem;
+    gap: 0.3rem;
+  }
+
   .conjugate-icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   
-  .molecule-hover-info {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90vw;
-    max-width: 300px;
-    z-index: 10000;
+  .molecule-hover-info,
+  .conjugate-result .molecule-hover-info {
+    opacity: 1;
+    max-height: none;
+    pointer-events: auto;
+    transform: none;
+    margin-top: 0.9rem;
+    padding: 0.85rem 1rem;
   }
   
-  .molecule.ibuprofen .molecule-hover-info,
-  .molecule.carnitine .molecule-hover-info,
-  .discovery-hover {
-    right: auto;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90vw;
-    max-width: 300px;
+  .carnitine-functions,
+  .impact-statement {
+    margin: 3rem 1rem;
+    padding: 1.8rem;
   }
   
   .function-card {
-    padding: 1rem;
+    padding: 1.25rem;
   }
   
   .card-icon {
@@ -7658,11 +7930,9 @@ body.light-theme .impact-content p {
   font-weight: 600;
   font-size: 1.2rem;
 }
-
 .partner-content {
   text-align: center;
 }
-
 .partner-name {
   font-size: 1.4rem;
   font-weight: 600;
@@ -7670,7 +7940,6 @@ body.light-theme .impact-content p {
   margin-bottom: 15px;
   line-height: 1.4;
 }
-
 .partner-description {
   font-size: 1rem;
   color: var(--text-secondary);

@@ -9,7 +9,7 @@ const CaseStudySection: React.FC<CaseStudySectionProps> = () => {
   return (
     <>
       {/* Case Study 1: Drug Metabolism */}
-      <section className="case-study-section">
+      <section className="case-study-section headline">
         <div className="case-study-content">
           <motion.h2 
             className="case-study-title"
@@ -124,13 +124,17 @@ const CaseStudySection: React.FC<CaseStudySectionProps> = () => {
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.7 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05, y: -10 }}
               >
                 <div className="molecule-structure">
+                  <div className="molecule-label">Parent Drug</div>
                   <div className="molecule-icon">💊</div>
                   <div className="molecule-name">Ibuprofen</div>
                   <div className="molecule-formula">C₁₃H₁₈O₂</div>
                   <div className="molecule-class">NSAID • Anti-inflammatory</div>
+                  <div className="molecule-badges">
+                    <span className="molecule-chip">COX Inhibitor</span>
+                    <span className="molecule-chip">OTC Analgesic</span>
+                  </div>
                   <div className="molecule-hover-info">
                     <div className="hover-title">Drug Properties</div>
                     <div className="hover-details">
@@ -152,6 +156,15 @@ const CaseStudySection: React.FC<CaseStudySectionProps> = () => {
               >
                 <div className="arrow-icon">+</div>
                 <div className="arrow-text">Conjugation</div>
+                <div className="arrow-pill">Acyltransferase Bridge</div>
+                <div className="arrow-subtext">Aligns drug metabolism with mitochondrial uptake</div>
+                <div className="formula-sequence">
+                  <span className="formula-fragment">C₁₃H₁₈O₂</span>
+                  <span className="formula-join">+</span>
+                  <span className="formula-fragment">C₇H₁₅NO₃</span>
+                  <span className="formula-join">⇌</span>
+                  <span className="formula-result">Ibuprofen-Carnitine</span>
+                </div>
               </motion.div>
 
               <motion.div 
@@ -160,13 +173,17 @@ const CaseStudySection: React.FC<CaseStudySectionProps> = () => {
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.9 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05, y: -10 }}
               >
                 <div className="molecule-structure">
+                  <div className="molecule-label">Metabolic Co-factor</div>
                   <div className="molecule-icon">⚡</div>
                   <div className="molecule-name">L-Carnitine</div>
                   <div className="molecule-formula">C₇H₁₅NO₃</div>
                   <div className="molecule-class">Essential Metabolite • Energy Shuttle</div>
+                  <div className="molecule-badges">
+                    <span className="molecule-chip">β-oxidation</span>
+                    <span className="molecule-chip">Mitochondrial Shuttle</span>
+                  </div>
                   <div className="molecule-hover-info">
                     <div className="hover-title">Metabolic Functions</div>
                     <div className="hover-details">
@@ -186,63 +203,73 @@ const CaseStudySection: React.FC<CaseStudySectionProps> = () => {
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1, delay: 1.5 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02, y: -5 }}
             >
               <div className="molecule-structure conjugate">
-                <motion.div 
-                  className="conjugate-icon"
-                  initial={{ scale: 0, rotate: -180 }}
-                  whileInView={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 1.2, delay: 1.7, type: "spring", stiffness: 200 }}
-                  viewport={{ once: true }}
-                >
-                  🔬
-                </motion.div>
-                <motion.div 
-                  className="molecule-name"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1.9 }}
-                  viewport={{ once: true }}
-                >
-                  Ibuprofen-Carnitine
-                </motion.div>
-                <motion.div 
-                  className="molecule-formula"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 2.0 }}
-                  viewport={{ once: true }}
-                >
-                  C₁₃H₁₈O₂-C₇H₁₅NO₃
-                </motion.div>
-                <motion.div 
-                  className="molecule-class"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 2.1 }}
-                  viewport={{ once: true }}
-                >
-                  Novel Conjugate • Drug-Metabolite
-                </motion.div>
-                <motion.div 
-                  className="discovery-badge"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 2.3, type: "spring", stiffness: 300 }}
-                  viewport={{ once: true }}
-                >
-                  First Discovery
-                </motion.div>
-                <motion.div 
-                  className="research-impact"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 2.4 }}
-                  viewport={{ once: true }}
-                >
-                  Human Urine Metabolite
-                </motion.div>
+                <div className="molecule-label conjugate">Conjugate Discovery</div>
+                <div className="conjugate-header">
+                  <motion.div 
+                    className="conjugate-icon"
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 1.2, delay: 1.7, type: "spring", stiffness: 200 }}
+                    viewport={{ once: true }}
+                  >
+                    🔬
+                  </motion.div>
+                  <div className="conjugate-titles">
+                    <motion.div 
+                      className="conjugate-name"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 1.9 }}
+                      viewport={{ once: true }}
+                    >
+                      Ibuprofen-Carnitine
+                    </motion.div>
+                    <motion.div 
+                      className="conjugate-formula"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 2.0 }}
+                      viewport={{ once: true }}
+                    >
+                      C₁₃H₁₈O₂-C₇H₁₅NO₃
+                    </motion.div>
+                    <motion.div 
+                      className="conjugate-class"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 2.1 }}
+                      viewport={{ once: true }}
+                    >
+                      Novel Conjugate • Drug-Metabolite
+                    </motion.div>
+                  </div>
+                </div>
+                <div className="conjugate-meta">
+                  <motion.div 
+                    className="discovery-badge"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 2.25, type: "spring", stiffness: 260 }}
+                    viewport={{ once: true }}
+                  >
+                    First Discovery
+                  </motion.div>
+                  <motion.div 
+                    className="research-impact"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 2.35 }}
+                    viewport={{ once: true }}
+                  >
+                    Human Urine Metabolite
+                  </motion.div>
+                </div>
+                <div className="molecule-badges conjugate-badges">
+                  <span className="molecule-chip">Energy Pathway Signal</span>
+                  <span className="molecule-chip">Safety Insight</span>
+                </div>
                 <div className="molecule-hover-info discovery-hover">
                   <div className="hover-title">Discovery Significance</div>
                   <div className="hover-details">
