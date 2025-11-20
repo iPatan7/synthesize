@@ -44,10 +44,31 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
   const angleStep = 360 / totalGroups;
   const angleOffset = -90; // start at top, rotate clockwise
 
+  const [radius, setRadius] = useState(270);
+  const [baseRadius, setBaseRadius] = useState(180);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 480) {
+        // Mobile sizing
+        const containerWidth = Math.min(window.innerWidth * 0.9, 400);
+        setRadius(containerWidth * 0.35); // ~140px for 400px width
+        setBaseRadius(containerWidth * 0.22); // ~90px for 400px width
+      } else {
+        // Desktop sizing
+        setRadius(270);
+        setBaseRadius(180);
+      }
+    };
+
+    handleResize(); // Initial calculation
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const getGroupPosition = (index: number) => {
     const angleDeg = index * angleStep + angleOffset;
     const angle = angleDeg * (Math.PI / 180);
-    const radius = 270;
     return {
       x: Math.cos(angle) * radius,
       y: Math.sin(angle) * radius,
@@ -58,12 +79,11 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
   const getReactionPosition = (groupIndex: number, reactionIndex: number, totalReactions: number) => {
     const { angleDeg } = getGroupPosition(groupIndex);
     const angleRadians = angleDeg * Math.PI / 180;
-    const baseRadiusFromCenter = 180;
-    const step = 28;
-    const radius = baseRadiusFromCenter + reactionIndex * step;
+    const step = window.innerWidth <= 480 ? 18 : 28; // Smaller step on mobile
+    const currentRadius = baseRadius + reactionIndex * step;
     return {
-      x: Math.cos(angleRadians) * radius,
-      y: Math.sin(angleRadians) * radius
+      x: Math.cos(angleRadians) * currentRadius,
+      y: Math.sin(angleRadians) * currentRadius
     };
   };
 
