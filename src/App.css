@@ -720,6 +720,10 @@ body.light-theme .navbar-logo-fallback {
   line-height: 1;
 }
 
+.lab-separator::before {
+  content: '•';
+}
+
 .lab-location {
   color: rgba(255, 255, 255, 0.85);
   font-size: 0.95rem;
