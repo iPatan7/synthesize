@@ -145,8 +145,8 @@ const DrPatanPage = () => {
     <div className="dr-patan-page">
       <div className="page-header">
         <div className="container">
-          <a 
-            href="/" 
+          <a
+            href="/"
             className="back-link"
             onClick={(e) => {
               e.preventDefault();
@@ -158,7 +158,7 @@ const DrPatanPage = () => {
           </a>
         </div>
       </div>
-      
+
       <div ref={ref} className="dr-patan-profile">
         <motion.div
           className="container"
@@ -169,14 +169,20 @@ const DrPatanPage = () => {
           {/* Header Section */}
           <motion.div className="profile-header" variants={itemVariants}>
             <div className="profile-photo">
-              <div className="photo-placeholder">👨‍🔬</div>
+              <div className="photo-placeholder">
+                <img
+                  src="/images/dr-patan.jpeg"
+                  alt="Dr. Abubaker Patan"
+                  className="profile-photo-image"
+                />
+              </div>
             </div>
             <div className="profile-info">
               <h1 className="profile-name">Dr. Abubaker Patan, Ph.D.</h1>
               <p className="profile-title">Postdoctoral Researcher</p>
               <p className="profile-institution">University of California, San Diego</p>
               <div className="profile-links">
-                <a 
+                <a
                   href="https://orcid.org/0000-0003-1415-7829"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -244,7 +250,7 @@ const DrPatanPage = () => {
                       <span className="type-label">{pub.type}</span>
                     </div>
                     <div className="publication-impact">
-                      <span 
+                      <span
                         className="impact-badge"
                         style={{ color: getImpactColor(pub.impact) }}
                       >
@@ -252,16 +258,16 @@ const DrPatanPage = () => {
                       </span>
                     </div>
                   </div>
-                  
+
                   <h3 className="publication-title">{pub.title}</h3>
-                  
+
                   <div className="publication-meta">
                     <p className="publication-journal">{pub.journal} • {pub.year}</p>
                     <p className="publication-contributors">{pub.contributors}</p>
                   </div>
-                  
+
                   <div className="publication-actions">
-                    <a 
+                    <a
                       href={`https://doi.org/${pub.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"

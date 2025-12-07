@@ -56,6 +56,36 @@ const WorkflowLinks = () => {
           type: "tool"
         },
         {
+          name: "Tiny Mass",
+          description: "Compact mass spectrometry data visualization dashboard",
+          url: "https://tinymass.gnps2.org/",
+          type: "tool"
+        },
+        {
+          name: "GNPS Explorer",
+          description: "Interactive dataset browser for GNPS2 public datasets",
+          url: "https://explorer.gnps2.org/",
+          type: "platform"
+        },
+        {
+          name: "ModiFinder",
+          description: "Tool for finding and analyzing modifications in mass spectrometry data",
+          url: "https://modifinder.gnps2.org/",
+          type: "tool"
+        },
+        {
+          name: "FASST Search",
+          description: "Fast spectral search tool for rapid compound identification",
+          url: "https://fasst.gnps2.org/fastsearch/",
+          type: "tool"
+        },
+        {
+          name: "Signals Notebook",
+          description: "Electronic lab notebook for metabolomics research",
+          url: "https://login.srp.revvitycloud.com/login?state=hKFo2SBaLWl4TFVLdEVzTk1sWTh3dDE2Tkp1UXVvNDNmeEY5YaFupWxvZ2luo3RpZNkgekltLWFHTGRxUUl3YjRZNDhPUktKNVNCZGc2ajBBZ2ajY2lk2SBtZzduOVZOWjlLeGdZTVB1clVmZWxrQ0RjWkRjaDZHSg&client=mg7n9VNZ9KxgYMPurUfelkCDcZDch6GJ&protocol=samlp&SAMLRequest=fZBdT8IwFIb%2Fyu56tQ86xljjTAiLBgVjQEjkxpTubGvc2tnTEvz3DojRxMT7932e95wb5F3bs5mzjVrDhwO03gwRjJVazbVC14HZgDlKAdv1MieNtT2yMHQCS5QWApS14i0aQOBGNDQwcDxK%2Byla7cpA6C7kAzw8e3xxBRKvGDxS8bPkB9nqWqoATf8XcVkZdnWqst3TPns81a%2BrZ2e2FbTv80LsC9FM7h%2BId6eNgMsxObHGDaZFkZO3KJlOsjE9%2BEmVgj9Oq9KfVtXBpyMex2U5goSPhyiig4VCy5XNCY1o4o%2BoH6UvUcxoxOJsT7wdGLyMpkFEvFPXKmTncTlxRjHNUSJTvANkVrDNbLVkQ5Dx74%2F%2BrvT%2Fd3qjrRa6JeHtFw%3D%3D&RelayState=5fed2677ac27806e93e4560af5f8e3ff6278fe42069a50787a104729d4445164",
+          type: "platform"
+        },
+        {
           name: "MassIVE Login",
           description: "Mass spectrometry data repository",
           url: "https://massive.ucsd.edu/ProteoSAFe/user/login.jsp",
@@ -83,6 +113,12 @@ const WorkflowLinks = () => {
           name: "Auto Smile",
           description: "Automated SMILES structure generation",
           url: "https://autosmiles.streamlit.app/",
+          type: "tool"
+        },
+        {
+          name: "MassQL Chatbot",
+          description: "Interactive AI assistant for MassQL query building and analysis",
+          url: "https://massql-analysis.gnps2.org/MassQL_Chatbot",
           type: "tool"
         },
         {
@@ -131,8 +167,8 @@ const WorkflowLinks = () => {
 
   const linkVariants = {
     hidden: { opacity: 0, scale: 0.9 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1
     }
   };
@@ -173,13 +209,29 @@ const WorkflowLinks = () => {
         >
           Research Workflow & Resources
         </motion.h2>
-        
+
         <motion.p
           className="subtitle"
           variants={categoryVariants}
         >
           Access our data management tools, analysis workflows, and research publications
         </motion.p>
+
+        <motion.div
+          className="info-banner"
+          variants={categoryVariants}
+        >
+          <div className="banner-icon">💡</div>
+          <div className="banner-content">
+            <h3 className="banner-title">Why Use These Tools?</h3>
+            <p className="banner-text">
+              These cutting-edge GNPS tools streamline metabolomics research by enabling rapid compound identification,
+              comprehensive spectral analysis, and collaborative data management. From AI-powered query building to fast
+              spectral searching, each tool is designed to accelerate discovery and enhance research reproducibility
+              in the metabolomics community.
+            </p>
+          </div>
+        </motion.div>
 
         <motion.div
           className="navigation-links"
@@ -212,7 +264,7 @@ const WorkflowLinks = () => {
                 <div className="category-icon">{category.icon}</div>
                 <h3 className="category-title">{category.title}</h3>
               </div>
-              
+
               <div className="links-container">
                 {category.links.map((link, linkIndex) => (
                   <motion.a
@@ -222,7 +274,7 @@ const WorkflowLinks = () => {
                     rel="noopener noreferrer"
                     className={`workflow-link ${link.type}`}
                     variants={linkVariants}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.05,
                       boxShadow: `0 10px 30px ${getTypeColor(link.type)}40`
                     }}

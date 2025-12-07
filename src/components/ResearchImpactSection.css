@@ -1,0 +1,17 @@
+/* Research Impact Section uses paradigm-section classes from App.css */
+/* Add stat-description for additional context */
+.stat-description {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    line-height: 1.4;
+    opacity: 0.8;
+}
+
+body.light-theme .stat-description {
+    color: #64748b;
+}
+
+.stat-card:hover .stat-description {
+    opacity: 1;
+}

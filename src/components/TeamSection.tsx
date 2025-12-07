@@ -20,7 +20,8 @@ const TeamSection: React.FC<TeamSectionProps> = () => {
     {
       name: "Abubaker Patan, PhD",
       role: "Postdoc",
-      icon: "👤"
+      icon: "👤",
+      photo: "/images/dr-patan.jpeg"
     },
     {
       name: "Shipei Xing",
@@ -106,14 +107,31 @@ const TeamSection: React.FC<TeamSectionProps> = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.02,
                   y: -8
                 }}
               >
                 <div className="member-photo">
                   <div className="photo-placeholder">
-                    <span className="placeholder-icon">{member.icon}</span>
+                    {member.photo ? (
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        className="member-photo-img"
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          borderRadius: '50%',
+                          position: 'absolute',
+                          top: 0,
+                          left: 0
+                        }}
+                      />
+                    ) : (
+                      <span className="placeholder-icon">{member.icon}</span>
+                    )}
                   </div>
                 </div>
                 <div className="member-info">
@@ -198,7 +216,7 @@ const TeamSection: React.FC<TeamSectionProps> = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   y: -3
                 }}

@@ -16,7 +16,7 @@ const BreakthroughSection: React.FC<BreakthroughSectionProps> = () => {
   return (
     <section className="breakthrough-section">
       <div className="breakthrough-content">
-        <motion.h2 
+        <motion.h2
           className="breakthrough-title"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -25,8 +25,8 @@ const BreakthroughSection: React.FC<BreakthroughSectionProps> = () => {
         >
           Doubling Our Known Universe
         </motion.h2>
-        
-        <motion.div 
+
+        <motion.div
           className="breakthrough-text"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,8 +38,8 @@ const BreakthroughSection: React.FC<BreakthroughSectionProps> = () => {
             We applied a strategy called <strong>Reverse Metabolomics</strong>: searching our new synthetic library against massive public data repositories.
           </p>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className="breakthrough-stats"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ const BreakthroughSection: React.FC<BreakthroughSectionProps> = () => {
         </motion.div>
 
         {/* Expandable Compounds Table */}
-        <motion.div 
+        <motion.div
           className="compounds-section"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,26 +69,46 @@ const BreakthroughSection: React.FC<BreakthroughSectionProps> = () => {
           viewport={{ once: true }}
         >
           <div className="compounds-header">
-            <h3 className="compounds-title">Synthetic Compound Library</h3>
+            <div className="compounds-title-row">
+              <h3 className="compounds-title">Synthetic Compound Library</h3>
+              <div className="library-badge">
+                <span className="badge-number">11,128</span>
+                <span className="badge-label">Bile Acid Derivatives</span>
+              </div>
+            </div>
             <p className="compounds-description">
-              Explore our comprehensive library of bile acid derivatives and related compounds used in the reverse metabolomics approach.
+              Explore our comprehensive library of <strong>11,128 bile acid derivatives</strong> and related compounds synthesized using 16 reaction types. This library was instrumental in our reverse metabolomics approach, enabling the identification of <strong>24,997 microbial metabolite matches</strong> across human datasets.
             </p>
+            <div className="library-highlights">
+              <div className="highlight-item">
+                <span className="highlight-icon">🔬</span>
+                <span className="highlight-text">16 Reaction Types</span>
+              </div>
+              <div className="highlight-item">
+                <span className="highlight-icon">🧬</span>
+                <span className="highlight-text">4,596 Unique Structures</span>
+              </div>
+              <div className="highlight-item">
+                <span className="highlight-icon">🦠</span>
+                <span className="highlight-text">Microbial + Drug Metabolites</span>
+              </div>
+            </div>
             <motion.button
               className="toggle-table-btn"
               onClick={toggleTable}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {isTableExpanded ? 'Hide' : 'Show'} Compound Data
+              {isTableExpanded ? 'Hide' : 'Explore'} Compound Data
               <span className="toggle-icon">
                 {isTableExpanded ? '▲' : '▼'}
               </span>
             </motion.button>
           </div>
-          
-          <CompoundsTable 
-            isExpanded={isTableExpanded} 
-            onToggle={toggleTable} 
+
+          <CompoundsTable
+            isExpanded={isTableExpanded}
+            onToggle={toggleTable}
           />
         </motion.div>
       </div>

@@ -193,6 +193,69 @@
           "formula": "C₂₄H₃₉ClO₄"
         }
       ]
+    },
+    {
+      "name": "Glucuronidation",
+      "color": "#22c55e",
+      "description": "Addition of glucuronic acid",
+      "reactions": [
+        {
+          "productName": "Cholic acid 3-glucuronide",
+          "reagents": "UDP-glucuronic acid",
+          "formula": "C₃₀H₄₈O₁₁"
+        },
+        {
+          "productName": "Cholic acid 7-glucuronide",
+          "reagents": "UGT enzyme",
+          "formula": "C₃₀H₄₈O₁₁"
+        }
+      ]
+    },
+    {
+      "name": "Carboxylation",
+      "color": "#f97316",
+      "description": "Addition of carboxyl groups",
+      "reactions": [
+        {
+          "productName": "Cholic acid dicarboxylate",
+          "reagents": "CO₂, Biotin",
+          "formula": "C₂₅H₄₀O₇"
+        }
+      ]
+    },
+    {
+      "name": "Phosphorylation",
+      "color": "#14b8a6",
+      "description": "Addition of phosphate groups",
+      "reactions": [
+        {
+          "productName": "Cholic acid 3-phosphate",
+          "reagents": "ATP, Kinase",
+          "formula": "C₂₄H₄₁O₈P"
+        },
+        {
+          "productName": "Cholic acid 7-phosphate",
+          "reagents": "Phosphate donor",
+          "formula": "C₂₄H₄₁O₈P"
+        }
+      ]
+    },
+    {
+      "name": "Succinylation",
+      "color": "#e11d48",
+      "description": "Addition of succinyl groups",
+      "reactions": [
+        {
+          "productName": "Cholic acid succinate",
+          "reagents": "Succinic anhydride",
+          "formula": "C₂₈H₄₄O₉"
+        },
+        {
+          "productName": "Cholic acid disuccinate",
+          "reagents": "Succinyl-CoA",
+          "formula": "C₃₂H₄₈O₁₃"
+        }
+      ]
     }
   ]
 }

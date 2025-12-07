@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import TransitionSection from './components/TransitionSection';
 import BreakthroughSection from './components/BreakthroughSection';
+import ResearchImpactSection from './components/ResearchImpactSection';
 import CaseStudySection from './components/CaseStudySection';
 import AwakeningSection from './components/AwakeningSection';
 import TeamSection from './components/TeamSection';
@@ -71,6 +72,7 @@ function App() {
           <HeroSection />
           <TransitionSection />
           <BreakthroughSection />
+          <ResearchImpactSection />
           <CaseStudySection />
           <AwakeningSection />
           <WorkflowLinks />

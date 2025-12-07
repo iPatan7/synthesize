@@ -21,43 +21,69 @@ interface ReactionWheelProps {
 }
 
 const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
-  const { 
-    selectedGroup, 
-    hoveredGroup, 
+  const {
+    selectedGroup,
+    hoveredGroup,
     selectedMolecule,
     hoveredMolecule,
-    setSelectedGroup, 
-    setHoveredGroup, 
+    setSelectedGroup,
+    setHoveredGroup,
     setSelectedMolecule,
     setHoveredMolecule
   } = useReactionContext();
   const [hoveredReaction, setHoveredReaction] = useState<Reaction | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isAutoCycling, setIsAutoCycling] = useState(true);
+  const [currentCycleIndex, setCurrentCycleIndex] = useState(0);
+
+  // Get data first before using in hooks
+  const { centralMolecule, reactionGroups } = reactionsData;
+  const totalGroups = reactionGroups.length;
+  const angleStep = 360 / totalGroups;
+  const angleOffset = -90; // start at top, rotate clockwise
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 500);
     return () => clearTimeout(timer);
   }, []);
 
-  const { centralMolecule, reactionGroups } = reactionsData;
-  const totalGroups = reactionGroups.length;
-  const angleStep = 360 / totalGroups;
-  const angleOffset = -90; // start at top, rotate clockwise
+  // Auto-cycling animation - like a clock
+  useEffect(() => {
+    if (!isAutoCycling || !isVisible) return;
 
-  const [radius, setRadius] = useState(270);
-  const [baseRadius, setBaseRadius] = useState(180);
+    const interval = setInterval(() => {
+      setCurrentCycleIndex((prev) => (prev + 1) % totalGroups);
+    }, 2500); // Change reaction every 2.5 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoCycling, isVisible, totalGroups]);
+
+  // Update selected group based on cycle index
+  useEffect(() => {
+    if (isAutoCycling && isVisible) {
+      setSelectedGroup(reactionGroups[currentCycleIndex].name);
+    }
+  }, [currentCycleIndex, isAutoCycling, isVisible, reactionGroups, setSelectedGroup]);
+
+  const [radius, setRadius] = useState(310); // Increased for 16 groups
+  const [baseRadius, setBaseRadius] = useState(210); // Increased for 16 groups
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 480) {
-        // Mobile sizing
-        const containerWidth = Math.min(window.innerWidth * 0.9, 400);
-        setRadius(containerWidth * 0.35); // ~140px for 400px width
-        setBaseRadius(containerWidth * 0.22); // ~90px for 400px width
+        // Mobile sizing - significantly reduced for better fit
+        const containerWidth = Math.min(window.innerWidth * 0.85, 320);
+        setRadius(containerWidth * 0.38); // Reduced from 0.42
+        setBaseRadius(containerWidth * 0.24); // Reduced from 0.28
+      } else if (window.innerWidth <= 768) {
+        // Tablet sizing
+        const containerWidth = Math.min(window.innerWidth * 0.9, 450);
+        setRadius(containerWidth * 0.40);
+        setBaseRadius(containerWidth * 0.26);
       } else {
-        // Desktop sizing
-        setRadius(270);
-        setBaseRadius(180);
+        // Desktop sizing - increased for 16 reaction groups
+        setRadius(310); // Increased from 270
+        setBaseRadius(210); // Increased from 180
       }
     };
 
@@ -89,14 +115,14 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
 
   return (
     <div className={`reaction-wheel-container ${className}`}>
-      <motion.div 
+      <motion.div
         className="reaction-wheel"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         {/* Central Molecule */}
-        <motion.div 
+        <motion.div
           className="central-molecule"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -115,7 +141,7 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
           const position = getGroupPosition(groupIndex);
           const isSelected = selectedGroup === group.name;
           const isHovered = hoveredGroup === group.name;
-          
+
           return (
             <motion.div
               key={group.name}
@@ -127,25 +153,28 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                 transform: 'translate(-50%, -50%)'
               } as React.CSSProperties}
               initial={{ opacity: 0, scale: 0, rotate: -180 }}
-              animate={{ 
-                opacity: 1, 
-                scale: 1, 
+              animate={{
+                opacity: 1,
+                scale: 1,
                 rotate: 0
               }}
-              transition={{ 
-                duration: 0.8, 
+              transition={{
+                duration: 0.8,
                 delay: 0.8 + groupIndex * 0.08,
                 type: "spring",
                 stiffness: 100,
                 damping: 15
               }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.3,
                 y: -5,
                 transition: { duration: 0.2 }
               }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setSelectedGroup(isSelected ? null : group.name)}
+              onClick={() => {
+                setIsAutoCycling(false); // Pause auto-cycling on manual interaction
+                setSelectedGroup(isSelected ? null : group.name);
+              }}
               onMouseEnter={() => setHoveredGroup(group.name)}
               onMouseLeave={() => setHoveredGroup(null)}
             >
@@ -161,7 +190,7 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
           {reactionGroups.map((group: ReactionGroup, groupIndex: number) => {
             const position = getGroupPosition(groupIndex);
             const isSelected = selectedGroup === group.name;
-            
+
             return (
               <g key={`line-group-${groupIndex}`}>
                 {/* Glow effect for selected lines */}
@@ -172,42 +201,42 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                     x2={400 + position.x}
                     y2={400 + position.y}
                     stroke={group.color}
-                    strokeWidth="8"
-                    opacity="0.3"
-                    filter="blur(4px)"
+                    strokeWidth="6"
+                    opacity="0.25"
+                    filter="blur(3px)"
                     initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ 
-                      pathLength: 1, 
-                      opacity: 0.3
+                    animate={{
+                      pathLength: 1,
+                      opacity: 0.25
                     }}
-                    transition={{ 
-                      duration: 1.5, 
+                    transition={{
+                      duration: 1.5,
                       delay: 0.1,
                       ease: "easeOut"
                     }}
                   />
                 )}
-                
-                {/* Main connection line - solid, precise */}
+
+                {/* Main connection line - thinner for 16 groups */}
                 <motion.line
                   x1="400"
                   y1="400"
                   x2={400 + position.x}
                   y2={400 + position.y}
                   stroke={group.color}
-                  strokeWidth={isSelected ? 4 : 2.5}
-                  opacity={isSelected ? 1 : 0.5}
+                  strokeWidth={isSelected ? 3 : 1.8}
+                  opacity={isSelected ? 0.9 : 0.4}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   vectorEffect="non-scaling-stroke"
                   initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ 
-                    pathLength: 1, 
-                    opacity: isSelected ? 1 : 0.5,
-                    strokeWidth: isSelected ? 4 : 2.5
+                  animate={{
+                    pathLength: 1,
+                    opacity: isSelected ? 0.9 : 0.4,
+                    strokeWidth: isSelected ? 3 : 1.8
                   }}
-                  transition={{ 
-                    duration: 1.5, 
+                  transition={{
+                    duration: 1.5,
                     delay: 1.2 + groupIndex * 0.05,
                     type: "spring",
                     stiffness: 80,
@@ -217,7 +246,7 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
 
                 <circle cx="400" cy="400" r={isSelected ? 3 : 2} fill={group.color} opacity={isSelected ? 1 : 0.8} />
                 <circle cx={400 + position.x} cy={400 + position.y} r={isSelected ? 3 : 2} fill={group.color} opacity={isSelected ? 1 : 0.8} />
-                
+
                 {/* Animated dots along the line */}
                 <motion.circle
                   cx="400"
@@ -226,12 +255,12 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                   fill={group.color}
                   opacity={isSelected ? 1 : 0.6}
                   initial={{ scale: 0, opacity: 0 }}
-                  animate={{ 
+                  animate={{
                     scale: isSelected ? 1.5 : 1,
                     opacity: isSelected ? 1 : 0.6
                   }}
-                  transition={{ 
-                    duration: 0.8, 
+                  transition={{
+                    duration: 0.8,
                     delay: 1.5 + groupIndex * 0.05,
                     type: "spring",
                     stiffness: 100
@@ -248,9 +277,9 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
             .find(group => group.name === selectedGroup)
             ?.reactions.map((reaction: Reaction, reactionIndex: number) => {
               const groupIndex = reactionGroups.findIndex(g => g.name === selectedGroup);
-              const position = getReactionPosition(groupIndex, reactionIndex, 
+              const position = getReactionPosition(groupIndex, reactionIndex,
                 reactionGroups[groupIndex].reactions.length);
-              
+
               return (
                 <motion.div
                   key={reaction.productName}
@@ -261,25 +290,25 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                     transform: 'translate(-50%, -50%)'
                   }}
                   initial={{ opacity: 0, scale: 0, rotate: -90 }}
-                  animate={{ 
-                    opacity: 1, 
-                    scale: 1, 
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
                     rotate: 0
                   }}
-                  exit={{ 
-                    opacity: 0, 
-                    scale: 0, 
+                  exit={{
+                    opacity: 0,
+                    scale: 0,
                     rotate: 90,
                     transition: { duration: 0.3 }
                   }}
-                  transition={{ 
-                    duration: 0.6, 
+                  transition={{
+                    duration: 0.6,
                     delay: reactionIndex * 0.15,
                     type: "spring",
                     stiffness: 120,
                     damping: 12
                   }}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.4,
                     y: -8,
                     transition: { duration: 0.2 }
@@ -312,9 +341,9 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                 ?.reactions.map((reaction: Reaction, reactionIndex: number) => {
                   const groupIndex = reactionGroups.findIndex(g => g.name === selectedGroup);
                   const groupPos = getGroupPosition(groupIndex);
-                  const productPos = getReactionPosition(groupIndex, reactionIndex, 
+                  const productPos = getReactionPosition(groupIndex, reactionIndex,
                     reactionGroups[groupIndex].reactions.length);
-                  
+
                   return (
                     <g key={`product-line-group-${reactionIndex}`}>
                       {/* Glow effect for product lines */}
@@ -324,32 +353,32 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                         x2={400 + productPos.x}
                         y2={400 + productPos.y}
                         stroke={reactionGroups[groupIndex].color}
-                        strokeWidth="6"
-                        opacity="0.2"
-                        filter="blur(3px)"
+                        strokeWidth="4"
+                        opacity="0.15"
+                        filter="blur(2px)"
                         initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: 0.2 }}
+                        animate={{ pathLength: 1, opacity: 0.15 }}
                         exit={{ pathLength: 0, opacity: 0 }}
                         transition={{ duration: 0.8, delay: reactionIndex * 0.1 }}
                       />
-                      
-                      {/* Main product line - solid, precise */}
+
+                      {/* Main product line - thinner for cleaner look */}
                       <motion.line
                         x1={400 + groupPos.x}
                         y1={400 + groupPos.y}
                         x2={400 + productPos.x}
                         y2={400 + productPos.y}
                         stroke={reactionGroups[groupIndex].color}
-                        strokeWidth="2.5"
-                        opacity="0.9"
+                        strokeWidth="1.8"
+                        opacity="0.7"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         vectorEffect="non-scaling-stroke"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: 1 }}
                         exit={{ pathLength: 0 }}
-                        transition={{ 
-                          duration: 0.8, 
+                        transition={{
+                          duration: 0.8,
                           delay: reactionIndex * 0.1,
                           ease: "easeOut"
                         }}
@@ -357,7 +386,7 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
 
                       <circle cx={400 + groupPos.x} cy={400 + groupPos.y} r="2" fill={reactionGroups[groupIndex].color} opacity="0.9" />
                       <circle cx={400 + productPos.x} cy={400 + productPos.y} r="2" fill={reactionGroups[groupIndex].color} opacity="0.9" />
-                      
+
                       {/* Animated particles along the line */}
                       <motion.circle
                         cx={400 + groupPos.x}
@@ -366,13 +395,13 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
                         fill={reactionGroups[groupIndex].color}
                         opacity="0.8"
                         initial={{ scale: 0, opacity: 0 }}
-                        animate={{ 
+                        animate={{
                           scale: [0, 1, 0.8, 1],
                           opacity: [0, 1, 0.8, 1]
                         }}
                         exit={{ scale: 0, opacity: 0 }}
-                        transition={{ 
-                          duration: 1.2, 
+                        transition={{
+                          duration: 1.2,
                           delay: reactionIndex * 0.1,
                           repeat: Infinity,
                           repeatDelay: 2
@@ -402,6 +431,30 @@ const ReactionWheel: React.FC<ReactionWheelProps> = ({ className = '' }) => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Auto-cycle Control */}
+      <motion.button
+        className="cycle-control"
+        onClick={() => setIsAutoCycling(!isAutoCycling)}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+        transition={{ duration: 0.6, delay: 2 }}
+        title={isAutoCycling ? "Pause auto-cycle" : "Resume auto-cycle"}
+      >
+        {isAutoCycling ? (
+          <>
+            <span className="control-icon">⏸️</span>
+            <span className="control-text">Pause</span>
+          </>
+        ) : (
+          <>
+            <span className="control-icon">▶️</span>
+            <span className="control-text">Play</span>
+          </>
+        )}
+      </motion.button>
 
     </div>
   );
